@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>働き方の未来 丸わかり | 労働経済論 後期第5回</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>
+MathJax = {
+  tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+  chtml: { scale: 1.05 }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style>
+:root {
+  --ink: #1f2937;
+  --ink-soft: #4b5563;
+  --muted: #6b7280;
+  --accent: #1e3a8a;
+  --accent-2: #0e7490;
+  --accent-3: #b45309;
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --line: #e5e7eb;
+  --line-soft: #f1f1ec;
+  --highlight: #fef3c7;
+  --good: #047857;
+  --danger: #b91c1c;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-feature-settings: "palt";
+  color: var(--ink-soft);
+  background: var(--bg);
+  line-height: 1.75;
+}
+.page { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+@media (max-width: 620px) { .page { padding: 20px 14px 60px; } }
+
+.cover {
+  border-left: 6px solid var(--accent);
+  padding: 20px 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f7fc 100%);
+  border-radius: 4px 14px 14px 4px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, .05);
+  margin-bottom: 24px;
+}
+.cover .eyebrow { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .2em; margin-bottom: 6px; }
+.cover h1 { font-size: 28px; font-weight: 900; color: var(--accent); margin: 0 0 6px; line-height: 1.3; letter-spacing: .02em; }
+.cover .sub { font-size: 14px; color: var(--muted); }
+
+section { margin: 40px 0; }
+.section-title {
+  font-size: 22px; font-weight: 900; color: var(--ink);
+  margin: 0 0 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--line);
+  display: flex; align-items: center; gap: 10px;
+  line-height: 1.3; letter-spacing: .02em;
+}
+h3 { font-size: 17px; font-weight: 700; color: var(--accent); margin: 28px 0 10px; line-height: 1.3; }
+h4 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 18px 0 8px; }
+p { margin: 10px 0; font-size: 15px; }
+strong { color: var(--ink); }
+ul, ol { padding-left: 20px; }
+li { margin: 4px 0; font-size: 15px; }
+
+.step-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 56px; height: 26px; padding: 0 10px; flex-shrink: 0;
+  border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: white;
+}
+.step-badge.intro   { background: var(--accent); }
+.step-badge.summary { background: var(--accent); }
+.step-badge.s-teal  { background: var(--accent-2); }
+.step-badge.s-amber { background: var(--accent-3); }
+
+.toc { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0 8px; }
+@media (max-width: 620px) { .toc { grid-template-columns: 1fr; } }
+.toc a {
+  display: block; padding: 14px 16px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 14px;
+  text-decoration: none; color: var(--ink); transition: all .15s;
+}
+.toc a:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(30, 58, 138, .08); border-color: #c7d2fe; }
+.toc .num { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .2em; }
+.toc .ttl { font-size: 15px; font-weight: 700; color: var(--accent); margin: 4px 0 2px; }
+.toc .desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 22px; margin: 16px 0; box-shadow: 0 1px 3px rgba(15, 23, 42, .04);
+}
+.callout { background: #ecfeff; border-left: 4px solid var(--accent-2); border-radius: 4px 10px 10px 4px; padding: 12px 16px; margin: 14px 0; }
+.callout.step2 { background: #fff7ed; border-left-color: var(--accent-3); }
+.callout.intro { background: #eef2ff; border-left-color: var(--accent); }
+.callout p { margin: 6px 0; font-size: 14.5px; }
+.callout ul { margin: 6px 0; }
+.callout li { font-size: 14.5px; }
+
+.note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 14px 16px; font-size: 14.5px; margin: 14px 0; }
+.note .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #92400e; margin-right: 8px; }
+.note p { margin: 4px 0; font-size: 14.5px; }
+.note li { font-size: 14.5px; }
+
+.math-block { background: #f8f8f3; border: 1px dashed #d6d3c7; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 16px; overflow-x: auto; }
+
+.discuss { background: #ecfeff; border-left: 4px solid var(--accent-2); border-radius: 4px 12px 12px 4px; padding: 14px 18px; margin: 18px 0; }
+.discuss-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.discuss-tag { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #fff; background: var(--accent-2); padding: 3px 10px; border-radius: 999px; }
+.discuss-q { font-size: 15px; font-weight: 700; color: var(--ink); margin: 4px 0; line-height: 1.7; }
+.discuss-hint { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
+.discuss-hint summary { cursor: pointer; font-weight: 700; color: var(--accent-2); font-size: 13px; }
+.discuss-hint summary:hover { color: var(--accent); }
+.discuss-hint .body { padding: 8px 0 0; font-size: 13.5px; }
+.discuss-hint .body p, .discuss-hint .body li { font-size: 13.5px; }
+
+.answer-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 14px 16px; margin: 14px 0; }
+.answer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.answer-tag { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #92400e; background: #fef3c7; padding: 3px 10px; border-radius: 999px; }
+.answer-id { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; color: var(--accent-3); letter-spacing: .06em; }
+.answer-q { font-size: 14px; color: var(--ink); margin: 4px 0 8px; line-height: 1.7; font-weight: 500; }
+textarea.answer-input {
+  width: 100%; min-height: 90px; padding: 10px 12px;
+  border: 1px solid #e5d99c; border-radius: 8px; background: #fffef9;
+  font-family: inherit; font-size: 14px; color: var(--ink); resize: vertical; line-height: 1.6;
+}
+textarea.answer-input:focus { outline: none; border-color: var(--accent-3); background: #ffffff; }
+.answer-save { display: inline-block; margin-top: 6px; font-size: 11.5px; color: var(--muted); }
+.answer-save.saved { color: var(--good); font-weight: 700; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.legend .item { display: inline-flex; align-items: center; gap: 6px; }
+.legend .sw { width: 16px; height: 3px; border-radius: 2px; display: inline-block; }
+.legend .box { width: 12px; height: 12px; border-radius: 3px; display: inline-block; border: 1px solid rgba(0,0,0,.08); }
+.legend .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 14px 0; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: center; }
+th { background: #f5f5ef; font-weight: 700; }
+td.lead { text-align: left; font-weight: 700; color: var(--ink); }
+td.left { text-align: left; }
+td.highlight { background: var(--highlight); font-weight: 700; }
+.table-wrap { overflow-x: auto; }
+.num-cell { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+
+.static-graph { background: #fcfcfa; border: 1px solid var(--line-soft); border-radius: 10px; padding: 12px; margin: 14px 0; }
+.static-graph svg { display: block; width: 100%; max-width: 680px; height: auto; margin: 0 auto; }
+.caption { font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 6px; }
+.src { font-size: 12px; color: var(--muted); margin-top: 4px; text-align: right; }
+.src a { color: var(--muted); }
+
+.graph-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 18px 0; }
+.graph-title { font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .06em; margin-bottom: 10px; }
+.graph-wrap canvas { display: block; width: 100%; height: 320px; touch-action: none; }
+.graph-wrap svg { display: block; width: 100%; height: auto; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 14px; }
+.control { flex: 1 1 200px; display: flex; flex-direction: column; gap: 4px; }
+.control label { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.control input[type=range] { width: 100%; accent-color: var(--accent); }
+.readout {
+  font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink);
+  background: #f5f5ef; border-radius: 6px; padding: 3px 8px; display: inline-block;
+}
+.verdict { margin-top: 12px; font-size: 14px; padding: 10px 14px; border-radius: 10px; background: #f8f8f3; border: 1px solid var(--line); }
+.verdict.good { border-color: #a7f3d0; background: #ecfdf5; }
+.verdict.bad  { border-color: #fecaca; background: #fef2f2; }
+.verdict b.good { color: var(--good); }
+.verdict b.bad  { color: var(--danger); }
+
+.goal-list { list-style: none; padding: 0; margin: 12px 0; }
+.goal-list li { background: #ffffff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; font-size: 14px; }
+.goal-list li .gnum {
+  display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700;
+  color: #fff; background: var(--accent); padding: 2px 8px; border-radius: 999px; margin-right: 8px; letter-spacing: .04em;
+}
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; } }
+.split .card { margin: 0; }
+.split .card h4 { margin-top: 0; }
+
+.kv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+@media (max-width: 620px) { .kv-grid { grid-template-columns: 1fr; } }
+.kv { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.kv .big { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2); }
+.kv .big.amber { color: var(--accent-3); }
+.kv .lbl { font-size: 12.5px; color: var(--muted); }
+
+.fill { display: inline-block; min-width: 60px; border-bottom: 1.5px solid var(--accent-3); text-align: center; color: var(--accent-3); font-weight: 700; padding: 0 4px; }
+.fills-hidden .fill { color: transparent; user-select: none; }
+.toggle-btn {
+  font-family: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent-3);
+  background: #fff7ed; border: 1px solid #fed7aa; border-radius: 999px; padding: 4px 14px; cursor: pointer;
+}
+.toggle-btn:hover { background: #ffedd5; }
+
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+@media (max-width: 620px) { .steps3 { grid-template-columns: 1fr; } }
+.stepbox { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 15px; }
+.stepbox .sn { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2); line-height: 1; }
+.stepbox .sn.amber { color: var(--accent-3); }
+.stepbox .st { font-size: 14px; font-weight: 700; color: var(--ink); margin: 5px 0 2px; }
+.stepbox .sd { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: #fff; }
+.seg button {
+  font-family: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-soft);
+  background: transparent; border: 0; padding: 5px 14px; cursor: pointer;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--accent); color: #fff; }
+
+.footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); text-align: center; }
+a.inline-link { color: var(--accent-2); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.chip { font-size: 13px; padding: 3px 11px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink-soft); }
+.chip.both { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
+.chip.new { border: 1.5px dashed var(--accent-3); color: var(--accent-3); font-weight: 700; }
+
+/* 変化と対策の対比 */
+.change-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 14px 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
+@media (max-width: 620px) { .change-row { grid-template-columns: 1fr; } }
+.change-row > div { padding: 14px 18px; }
+.change-row .chg { border-right: 1px solid var(--line); }
+@media (max-width: 620px) { .change-row .chg { border-right: 0; border-bottom: 1px solid var(--line); } }
+.change-row .lbl { font-size: 11px; font-weight: 700; letter-spacing: .12em; padding: 2px 10px; border-radius: 999px; color: #fff; display: inline-block; margin-bottom: 6px; }
+.change-row .chg .lbl { background: var(--accent-3); }
+.change-row .cnt .lbl { background: var(--accent-2); }
+.change-row ul { margin: 4px 0; }
+.change-row li { font-size: 14px; }
+
+/* 法改正の論点 */
+.issue-list { list-style: none; padding: 0; margin: 12px 0; counter-reset: iss; }
+.issue-list li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; font-size: 14px; }
+.issue-list li::before { counter-increment: iss; content: counter(iss); font-family: "JetBrains Mono", monospace; font-weight: 700; color: #fff; background: var(--accent); border-radius: 999px; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; margin-top: 2px; }
+.issue-list .nm { font-weight: 700; color: var(--ink); }
+.issue-list .ds { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* 面接評価シート */
+table.sheet td { font-size: 13.5px; }
+table.sheet td.cat { font-weight: 700; color: var(--accent); background: #f8f9fd; writing-mode: horizontal-tb; width: 92px; }
+table.sheet select { font-family: "JetBrains Mono", monospace; font-size: 13px; padding: 3px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+.cat-bars { margin-top: 12px; }
+.cat-bar { display: grid; grid-template-columns: 140px 1fr 56px; gap: 10px; align-items: center; margin: 6px 0; font-size: 13px; }
+.cat-bar .track { height: 10px; background: var(--line-soft); border-radius: 999px; overflow: hidden; }
+.cat-bar .bar { height: 100%; background: var(--accent-2); border-radius: 999px; }
+.cat-bar .val { font-family: "JetBrains Mono", monospace; color: var(--ink); text-align: right; }
+
+/* タスク分類ツール */
+table.tasks input[type=text] { width: 100%; font-family: inherit; font-size: 13.5px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+table.tasks select { font-family: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+table.tasks td { padding: 6px 8px; }
+table.tally td { font-family: "JetBrains Mono", monospace; }
+table.tally td.lead { font-family: inherit; }
+.small-btn { font-family: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent); background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+.small-btn:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">労働経済論 後期第5回 補助教材</div>
+  <h1>働き方の未来 ― 人手不足と技術的失業の時代をどう生きるか</h1>
+  <div class="sub">これから日本の働き方が変わる理由は二つある。人口減少による深刻な人手不足と、AIなどの急速な技術進歩による失業である。この二つが同時に起こると、人手が足りない業界と仕事を失う人が共存し、労働移動が避けられなくなる。タスク・モデル、暗黙の契約、一般的訓練の理論を手がかりに、「これからの安定」とは何か、働く人と企業、そして就職活動を控えた学生に何が求められるかを考える</div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <a href="#intro">
+    <div class="num">00 / INTRO</div>
+    <div class="ttl">前回の復習と本日のゴール</div>
+    <div class="desc">外国人労働者の穴埋め</div>
+  </a>
+  <a href="#population">
+    <div class="num">01 / 理由①</div>
+    <div class="ttl">人口減少による人手不足</div>
+    <div class="desc">長期の人口推移／地域の不均衡／労働投入量の減少</div>
+  </a>
+  <a href="#tech">
+    <div class="num">02 / 理由②</div>
+    <div class="ttl">急速な技術進歩による失業</div>
+    <div class="desc">タスク・モデルと3つの効果／生成AIと若者の雇用</div>
+  </a>
+  <a href="#mobility">
+    <div class="num">03 / 労働移動</div>
+    <div class="ttl">労働移動と生活の安定</div>
+    <div class="desc">前向き・後ろ向きの移動／スキルのミスマッチ／雇用転換の理由</div>
+  </a>
+  <a href="#stability">
+    <div class="num">04 / 安定</div>
+    <div class="ttl">これからの安定とは ― 暗黙の契約</div>
+    <div class="desc">企業が提供する保険／フレキシキュリティ／シミュレーター</div>
+  </a>
+  <a href="#reform">
+    <div class="num">05 / 制度</div>
+    <div class="ttl">人手不足＋技術的失業と労働基準法</div>
+    <div class="desc">ミスマッチの共存／労働基準法改正の論点</div>
+  </a>
+  <a href="#worker">
+    <div class="num">06 / 働く人</div>
+    <div class="ttl">働く人に求められること</div>
+    <div class="desc">学び続ける意欲／得意分野の組み合わせ</div>
+  </a>
+  <a href="#environment">
+    <div class="num">07 / 環境変化</div>
+    <div class="ttl">これからの労働環境の変化</div>
+    <div class="desc">労働移動／経験者採用と一般的訓練／企業内マネジメント</div>
+  </a>
+  <a href="#student">
+    <div class="num">08 / 学生</div>
+    <div class="ttl">学生が直面する課題</div>
+    <div class="desc">就職活動はなぜ難しいか／企業側の不安／キャリアは轍</div>
+  </a>
+  <a href="#task">
+    <div class="num">09 / 検討課題</div>
+    <div class="ttl">なくなる仕事・増える仕事</div>
+    <div class="desc">job tag で志望職種のタスクを分類する</div>
+  </a>
+  <a href="#summary">
+    <div class="num">10 / SUMMARY</div>
+    <div class="ttl">まとめと次回までの課題</div>
+    <div class="desc">本日のポイント／参考文献／兼業・副業の事前学習</div>
+  </a>
+</nav>
+
+<!-- INTRO -->
+<section id="intro">
+  <h2 class="section-title"><span class="step-badge intro">INTRO</span>前回の復習と本日のゴール</h2>
+
+  <p>後期第4回では、<strong>外国人労働者</strong>を受け入れると賃金は下がるのかを、需給モデルと実証研究から考えた。今回は「多様な働き方」の締めくくりとして、<strong>働き方の未来</strong>を扱う。</p>
+
+  <h3>前回の穴埋め ― 言葉を思い出そう</h3>
+  <p style="margin-bottom:6px;"><button type="button" class="toggle-btn" id="fillToggle">答えを隠す</button></p>
+  <div class="card" id="fillCard">
+    <ul>
+      <li>外国人労働者は、<span class="fill">専門的・技術的分野</span>についてはこれまでも就労目的での在留が認められていた。</li>
+      <li>外国人労働者を受け入れることで、国内労働者の<span class="fill">賃金低下</span>につながる可能性が指摘されてきた。</li>
+      <li>2019年4月より、外国人労働者受け入れの新在留資格「<span class="fill">特定技能</span>」が導入された。
+        <ul>
+          <li>人手不足が深刻な、特定産業分野（<span class="fill">19</span>分野）に限定した制度。</li>
+        </ul>
+      </li>
+      <li>日本人労働者と同質的な外国人が単純労働力の市場に入ると、均衡賃金が低下するはずだが、実証研究では、必ずしも自国民の賃金の低下が起こらないことが示されている。
+        <ul>
+          <li>これまでの自国労働者が他地域や他産業へと<span class="fill">移動</span>する。</li>
+          <li>労働市場から<span class="fill">退出</span>する。</li>
+          <li>進学など<span class="fill">人的資本投資</span>が変化する、などが理由。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="callout intro">
+    <p>前回は、外国人労働者の影響は<strong>日本人と企業がどう反応するか</strong>（移動する・進学する・技術を選び直す）で決まることを学んだ。今回も同じ視点を使う。人口が減り、技術が仕事の中身を入れ替えていくとき、<strong>働く人はどう移動し、どう学び直すのか</strong>。そして、そのとき<strong>生活の安定</strong>はどうすれば守れるのか。</p>
+  </div>
+
+  <h3>本日のゴール</h3>
+  <ol class="goal-list">
+    <li><span class="gnum">G1</span><strong>人口減少</strong>が、世代間・地域間で<strong>不均衡な人手不足</strong>をもたらすことを、データで説明できる</li>
+    <li><span class="gnum">G2</span>働き手は増えているのに<strong>労働投入量が減っている</strong>理由を説明できる</li>
+    <li><span class="gnum">G3</span><strong>タスク・モデル</strong>を使い、技術が労働需要に与える<strong>置換・生産性・復元</strong>の3つの効果を説明できる</li>
+    <li><span class="gnum">G4</span><strong>前向き・後ろ向きの労働移動</strong>と<strong>スキルのミスマッチ</strong>の問題を説明できる</li>
+    <li><span class="gnum">G5</span><strong>暗黙の契約</strong>の考え方で「安定した雇用」の意味を説明し、<strong>フレキシキュリティ</strong>への転換を論じられる</li>
+    <li><span class="gnum">G6</span>一般的訓練の費用負担の理論から、<strong>人材育成への公的支援の根拠</strong>を説明できる</li>
+    <li><span class="gnum">G7</span>就職活動を<strong>企業側の不安の解消</strong>という視点から捉え直せる</li>
+  </ol>
+</section>
+
+<!-- POPULATION -->
+<section id="population">
+  <h2 class="section-title"><span class="step-badge s-teal">理由①</span>人口減少による人手不足</h2>
+
+  <p>これから働き方が変わる一つ目の理由は、<strong>人口減少による人手不足</strong>である。まず日本の人口を長い時間軸で眺めてみよう。</p>
+
+  <h3>日本の人口減少 ― 長期の推移</h3>
+  <div class="static-graph">
+    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="鎌倉幕府成立の1185年から2120年までの日本の人口の長期推移。2008年の1億2808万人をピークに急減し、2120年には中位推計で4973万人になる">
+      <g id="popChart"></g>
+    </svg>
+    <div class="legend" style="justify-content:center;">
+      <span class="item"><span class="sw" style="background:#4b5563"></span>実績</span>
+      <span class="item"><span class="sw" style="background:#b45309"></span>中位推計</span>
+      <span class="item"><span class="sw" style="background:#d6a35c"></span>高位・低位推計（破線）</span>
+    </div>
+    <div class="caption">日本の人口（万人）。スライドに示された主な時点の値を結んだ概略図。点にカーソルを合わせると出来事が表示される</div>
+  </div>
+  <p class="src">出所：国土交通省（2023）「第三次国土形成計画（全国計画）（令和5年7月28日閣議決定）」の図をもとに作図</p>
+
+  <div class="kv-grid">
+    <div class="kv"><div class="big">12,808<span style="font-size:13px;"> 万人</span></div><div class="lbl">2008年の人口のピーク（高齢化率22.1％）</div></div>
+    <div class="kv"><div class="big amber">8,700<span style="font-size:13px;"> 万人</span></div><div class="lbl">2070年の推計人口（高齢化率38.7％）。2120年には中位推計で4,973万人</div></div>
+  </div>
+
+  <div class="callout">
+    <p>江戸時代の約3,000万人から、明治以降の100年あまりで人口は4倍に増えた。そして2008年をピークに、<strong>増えたときと同じくらいの速さで減っていく</strong>。今後も65歳以上の高齢者は増え続けるが、<strong>現役世代は人数だけでなく、割合で見ても減っていく</strong>。今後は、今以上に<strong>深刻な人手不足</strong>になる。</p>
+  </div>
+
+  <div class="kv-grid">
+    <div class="kv"><div class="big">約341<span style="font-size:13px;"> 万人</span></div><div class="lbl">2030年の労働供給不足（リクルートワークス研究所「未来予測2040」の試算）</div></div>
+    <div class="kv"><div class="big amber">約1,100<span style="font-size:13px;"> 万人</span></div><div class="lbl">2040年の労働供給不足（同上）</div></div>
+  </div>
+  <p class="src">人口の推移：厚生労働省（2025）「我が国の人口について」</p>
+
+  <h3>世代間、また地域で不均衡な人口減少</h3>
+  <p>国立社会保障・人口問題研究所は、2020年の国勢調査を基準として<strong>市区町村別の将来人口</strong>を推計している。2050年の人口を2020年と比べると、一部の利便性が高い地域を除いて、<strong>多くの市区町村で人口が大きく減る</strong>。</p>
+  <div class="split">
+    <div class="card">
+      <h4>若者は移動する</h4>
+      <p style="font-size:14px;">若者は、進学や就職を機に<strong>利便性の高い地域へ移動</strong>する。大都市圏と地方の中核都市に人が集まる。</p>
+    </div>
+    <div class="card">
+      <h4>高齢者は移動しない</h4>
+      <p style="font-size:14px;">高齢者は<strong>住み慣れた地域から移動しない</strong>。その結果、地方では高齢化が進み、介護などの需要が残る一方で、担い手が足りなくなる。</p>
+    </div>
+  </div>
+  <p class="src">出所：国立社会保障・人口問題研究所「『日本の地域別将来推計人口』令和5（2023）年推計」</p>
+
+  <h3>人手不足への対応策</h3>
+  <p>人手不足対策として、これまで次の3つの方向が議論されてきた。</p>
+  <div class="steps3">
+    <div class="stepbox">
+      <div class="sn">1</div>
+      <div class="st">働き手を増やす</div>
+      <div class="sd">女性・高齢者・外国人の活躍、限定正社員を含む多様な働き方、副業・兼業の活用。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">2</div>
+      <div class="st">生産性の向上</div>
+      <div class="sd">リスキリングなどの人的資本投資、ロボットやAIの活用。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">3</div>
+      <div class="st">仕事を減らす</div>
+      <div class="sd">ロボットやAI、アウトソーシングの活用、過剰品質の見直し、価格転嫁やサービスの有料化。</div>
+    </div>
+  </div>
+  <p>後期の「多様な働き方」の回（高齢者・女性・外国人）で扱ってきたのは、主に1つ目の<strong>働き手を増やす</strong>対策である。</p>
+
+  <h3>労働者は増えている？ ― 働き手は増えているが労働投入量は減少</h3>
+  <div class="kv-grid">
+    <div class="kv"><div class="big">7,004<span style="font-size:13px;"> 万人</span></div><div class="lbl">労働力人口（就業者と完全失業者）。2025年の平均で7,000万人を超え、過去最高</div></div>
+    <div class="kv"><div class="big amber">42.7 → 36.3<span style="font-size:13px;"> 時間</span></div><div class="lbl">平均週間就業時間（2000年 → 2024年）。短時間労働者の増加による</div></div>
+  </div>
+  <p class="src">出典：朝日新聞2026年1月30日、日本の人事部2025年6月4日</p>
+
+  <p>働く人の数が増えても、一人あたりの労働時間が短くなれば、<strong>延べ労働時間（労働投入量）</strong>は減ってしまう。労働投入量は「人数 × 時間」で決まる。</p>
+  <div class="math-block">$$\text{延べ労働時間} = \text{就業者数} \times \text{平均就業時間}$$</div>
+
+  <div class="graph-wrap">
+    <div class="graph-title">試してみよう ― 人数が増えても労働投入量は減る？</div>
+    <svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2000年と比較年の延べ労働時間を、就業者数と平均就業時間の面積として比べる図">
+      <g id="hoursChart"></g>
+    </svg>
+    <div class="controls">
+      <div class="control">
+        <label>2000年からの就業者数の増加率（仮の値） <span class="readout" id="hrGOut">5%</span></label>
+        <input type="range" id="hrG" min="0" max="30" step="1" value="5">
+      </div>
+      <div class="control">
+        <label>比較年の平均週間就業時間 <span class="readout" id="hrHOut">36.3 時間</span></label>
+        <input type="range" id="hrH" min="30" max="45" step="0.1" value="36.3">
+      </div>
+    </div>
+    <div class="verdict" id="hrVerdict"></div>
+  </div>
+
+  <div class="callout step2">
+    <p>平均就業時間が42.7時間から36.3時間に下がると、延べ労働時間を維持するには就業者が<strong>約18％</strong>増えなければならない。さらに、<strong>パートタイム労働者が増えると全要素生産性が低下する可能性</strong>も指摘されている（森川 2017）。だからこそ、生産性向上のための<strong>人的資本投資</strong>が不可欠になる。人手不足は景気による一時的なものではなく、<strong>構造的な要因</strong>によるものである。</p>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech">
+  <h2 class="section-title"><span class="step-badge s-amber">理由②</span>急速な技術進歩による失業</h2>
+
+  <p>働き方が変わる二つ目の理由は、<strong>急速な技術進歩</strong>である。技術進歩は私たちの生活を豊かにし、人々は新たな財・サービスを利用できるようになる。問題は、その<strong>スピード</strong>である。</p>
+
+  <h3>置き換わりのスピードが速くなった</h3>
+  <div class="static-graph">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馬車から自動車への置き換わりは緩やかなS字、携帯電話からスマートフォンへの置き換わりは急激であることを示す模式図">
+      <defs>
+        <marker id="arrT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker>
+      </defs>
+      <!-- 左：馬車 → 自動車 -->
+      <g transform="translate(30,20)">
+        <rect x="0" y="0" width="290" height="150" rx="10" fill="#fff" stroke="#e5e7eb"/>
+        <line x1="20" y1="130" x2="275" y2="130" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrT)"/>
+        <text x="270" y="146" font-size="11" fill="#6b7280" text-anchor="end">時間</text>
+        <path d="M20,40 C110,40 120,120 270,120" fill="none" stroke="#b45309" stroke-width="2.6"/>
+        <path d="M20,120 C110,120 120,40 270,40" fill="none" stroke="#0e7490" stroke-width="2.6"/>
+        <text x="28" y="32" font-size="13" font-weight="700" fill="#b45309">馬車</text>
+        <text x="262" y="32" font-size="13" font-weight="700" fill="#0e7490" text-anchor="end">自動車</text>
+        <text x="145" y="100" font-size="11.5" fill="#4b5563" text-anchor="middle">数十年かけて</text>
+        <text x="145" y="115" font-size="11.5" fill="#4b5563" text-anchor="middle">ゆっくり入れ替わる</text>
+      </g>
+      <!-- 右：携帯 → スマホ -->
+      <g transform="translate(360,20)">
+        <rect x="0" y="0" width="290" height="150" rx="10" fill="#fff" stroke="#e5e7eb"/>
+        <line x1="20" y1="130" x2="275" y2="130" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrT)"/>
+        <text x="270" y="146" font-size="11" fill="#6b7280" text-anchor="end">時間</text>
+        <path d="M20,40 L130,40 L160,120 L270,120" fill="none" stroke="#b45309" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M20,120 L130,120 L160,40 L270,40" fill="none" stroke="#0e7490" stroke-width="2.6" stroke-linejoin="round"/>
+        <text x="28" y="32" font-size="13" font-weight="700" fill="#b45309">携帯</text>
+        <text x="262" y="32" font-size="13" font-weight="700" fill="#0e7490" text-anchor="end">スマホ</text>
+        <text x="210" y="100" font-size="11.5" fill="#4b5563" text-anchor="middle">短期間で</text>
+        <text x="210" y="115" font-size="11.5" fill="#4b5563" text-anchor="middle">一気に入れ替わる</text>
+      </g>
+      <text x="340" y="198" font-size="12" fill="#6b7280" text-anchor="middle">フォードT型（1907年・アメリカ）の登場から、馬車は時間をかけて自動車に置き換わった</text>
+    </svg>
+  </div>
+  <div class="card">
+    <ul>
+      <li><strong>適度なスピード</strong>の技術進歩のとき、熟練技能者は従来の仕事を続け、若者が新しい仕事に取り組むことが可能だった（世代交代で吸収できた）。</li>
+      <li>しかし最近は、<strong>特定の仕事が短期間で失われる</strong>ことが増えている。例：有人改札、写真の現像、銀行の支店。</li>
+      <li>現在進行形で、<strong>自動運転自動車、自動翻訳・通訳</strong>。</li>
+      <li>令和8年版労働経済白書のテーマは<strong>「AI等技術革新が進む中での労働市場の現状と課題」</strong>。</li>
+      <li>米国では、<strong>生成AIで若年層の入口業務が減少</strong>していることが示されている。</li>
+    </ul>
+  </div>
+  <div class="callout step2">
+    <p>長い労働人生の中で、<strong>仕事内容や働き方を大きく変える必要性</strong>に迫られる。技術進歩が速いと、世代交代を待たずに仕事が消えるため、<strong>技術的失業</strong>が増える。</p>
+  </div>
+
+  <h3>技術は「職業」ではなく「タスク」を置き換える</h3>
+  <p>一つの職業は、たくさんの<strong>タスク（作業）</strong>の組み合わせでできている。技術が置き換えるのは職業そのものではなく、その中の一部のタスクである。どのようなタスクが機械に置き換えられやすいかは、次の2つの軸で整理できる。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>認知的（頭を使う）</th><th>手作業的（体を使う）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="lead">定型的<br><span style="font-weight:400;font-size:12.5px;color:var(--muted);">手順を書き出せる</span></td>
+          <td class="left highlight">伝票入力、データ照合、定型の窓口対応<br>→ <strong>置き換わりやすい</strong></td>
+          <td class="left highlight">組立ライン作業、検品<br>→ <strong>置き換わりやすい</strong></td>
+        </tr>
+        <tr>
+          <td class="lead">非定型的<br><span style="font-weight:400;font-size:12.5px;color:var(--muted);">状況に応じて判断する</span></td>
+          <td class="left">企画、研究、交渉、マネジメント<br>→ <strong>機械が補完する</strong>（生産性が上がる）</td>
+          <td class="left">介護、調理、清掃<br>→ <strong>影響を受けにくい</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>技術が労働需要に与える3つの効果</h3>
+  <div class="steps3">
+    <div class="stepbox">
+      <div class="sn amber">① −</div>
+      <div class="st">置換効果</div>
+      <div class="sd">これまで人が担っていたタスクを機械が引き受ける。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">② ＋</div>
+      <div class="st">生産性効果</div>
+      <div class="sd">コストが下がって生産が増え、残ったタスクへの需要が増える。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">③ ＋</div>
+      <div class="st">復元効果</div>
+      <div class="sd">技術が新しいタスク・新しい仕事を生み出す。</div>
+    </div>
+  </div>
+  <p>雇用が減るかどうかは、<strong>①と②③の大きさ次第</strong>である。下のシミュレーターで、3つの効果の大きさを動かしてみよう（数値は説明のための仮のもの）。</p>
+
+  <div class="graph-wrap">
+    <div class="graph-title">シミュレーター ― 技術進歩で雇用は増えるか減るか</div>
+    <div style="margin-bottom:10px;">
+      <div class="seg" id="taskSeg" style="flex-wrap:wrap;">
+        <button type="button" data-k="replace" class="on">置換が大きい技術</button>
+        <button type="button" data-k="balanced">バランス型</button>
+        <button type="button" data-k="complement">補完的な技術</button>
+      </div>
+    </div>
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="技術導入前の雇用100から、置換効果で減り、生産性効果と復元効果で増えて、導入後の雇用が決まる様子を示す滝グラフ">
+      <g id="taskChart"></g>
+    </svg>
+    <div class="controls">
+      <div class="control">
+        <label>① 置換効果（機械に置き換わる雇用） <span class="readout" id="teDOut">−40</span></label>
+        <input type="range" id="teD" min="0" max="60" step="1" value="40">
+      </div>
+      <div class="control">
+        <label>② 生産性効果（残ったタスクの需要増） <span class="readout" id="tePOut">+10</span></label>
+        <input type="range" id="teP" min="0" max="40" step="1" value="10">
+      </div>
+      <div class="control">
+        <label>③ 復元効果（新しいタスクの雇用） <span class="readout" id="teROut">+10</span></label>
+        <input type="range" id="teR" min="0" max="40" step="1" value="10">
+      </div>
+    </div>
+    <div class="verdict" id="taskVerdict"></div>
+  </div>
+
+  <div class="callout">
+    <p>「なくなる仕事」を数えるより、<strong>「仕事の中身がどう入れ替わるか」</strong>を見る。全体の雇用が増える場合でも、置き換えられた人がそのまま新しいタスクに移れるとは限らない。問われるのは、<strong>新しいタスクに移れるかどうか</strong>である。</p>
+  </div>
+
+  <h3>生成AIと若者の雇用</h3>
+  <div class="card">
+    <ul>
+      <li>米国：<strong>AI曝露度の高い職業</strong>の22〜25歳の雇用は、低曝露の同年代より<strong>約19％低い</strong>。調整は主に<strong>採用減</strong>を通じて起きている。</li>
+      <li>AIが<strong>代替する</strong>職業では若年雇用が減り、<strong>補完する</strong>職業では雇用は横ばいか増加。</li>
+      <li>減ったのは、教科書や手順書で学べる<strong>「形式知」</strong>に依存する職業。</li>
+    </ul>
+  </div>
+  <div class="split">
+    <div class="note" style="margin:0;">
+      <span class="tag">注意点</span>
+      <p>悪化の一部は<strong>ChatGPT公開前に始まって</strong>おり、コロナ期の採用増の反動とも重なるため、結論は出ていない。</p>
+    </div>
+    <div class="note" style="margin:0;">
+      <span class="tag">日本への含意</span>
+      <p>メンバーシップ型雇用と新卒一括採用のもとでは「起きにくい」のではなく<strong>「起き方が違う」</strong>という指摘もある（<a href="https://www.jri.co.jp/report/jrireview/detail/16641/" target="_blank" rel="noopener" class="inline-link">日本総研</a>）。</p>
+    </div>
+  </div>
+
+  <div class="discuss">
+    <div class="discuss-head"><span class="discuss-tag">考えてみよう</span></div>
+    <div class="discuss-q">若者の「入口業務」が減ると、なぜ問題なのだろうか。形式知と暗黙知の違いに注目して考えてみよう。</div>
+    <div class="discuss-hint">
+      <details>
+        <summary>考えるヒント</summary>
+        <div class="body">
+          <ul>
+            <li>新人は、まず定型的な<strong>入口業務</strong>を担当しながら、先輩の仕事を見て<strong>暗黙知</strong>（言葉にしにくいコツや判断）を身につけてきた。前期で学んだ<strong>OJT</strong>の仕組みである。</li>
+            <li>入口業務がAIに置き換わると、目の前の効率は上がるが、<strong>将来の熟練者が育つ場</strong>がなくなるかもしれない。</li>
+            <li>日本のように新卒をまとめて採用し、社内で育てる仕組みでは、採用数の減少ではなく<strong>配属や育成の中身の変化</strong>として現れる可能性がある。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILITY -->
+<section id="mobility">
+  <h2 class="section-title"><span class="step-badge s-teal">労働移動</span>労働移動と生活の安定</h2>
+
+  <h3>今後、労働移動が活発に</h3>
+  <p><strong>労働移動</strong>とは、会社を変わる・職種を変える・地域を移動することである。人手不足と技術進歩は、どちらも労働移動を増やすが、その性格は異なる。</p>
+  <div class="split">
+    <div class="card" style="border-left:4px solid var(--accent-2);">
+      <h4>前向きな労働移動</h4>
+      <p style="font-size:14px;">人口減少を踏まえると、人手不足の業界から<strong>「ぜひ」と請われて移動する</strong>ケースが増える。技術進歩で生まれた新しい仕事への移動もある。</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--accent-3);">
+      <h4>後ろ向きな労働移動</h4>
+      <p style="font-size:14px;">技術進歩により、これまでの仕事が失われてしまったことで<strong>「仕方なく」移動する</strong>ケースも増える。</p>
+    </div>
+  </div>
+  <p class="src">転職者数・転職等希望者数の推移：総務省統計局「明日への統計2026」<a href="https://www.stat.go.jp/info/guide/asu/" target="_blank" rel="noopener">stat.go.jp</a>／前職離職理由別の転職者数：厚生労働省「2024年版労働経済の分析」<a href="https://www.mhlw.go.jp/stf/wp/hakusyo/roudou/24/24-1.html" target="_blank" rel="noopener">mhlw.go.jp</a></p>
+
+  <h3>スキルのミスマッチ</h3>
+  <p>失業者が人手不足の業界で働くことができれば良いが、それが難しいのが現実である。<strong>スキルのミスマッチ</strong>が存在するからだ。ミスマッチの解消・軽減は社会的に重要である。</p>
+  <div class="kv-grid">
+    <div class="kv"><div class="big">約11<span style="font-size:13px;"> ％</span></div><div class="lbl">アメリカのデータで、仕事と労働者のスキルのマッチングが最悪の10％層から最良の10％層に移ると、以後の賃金が毎年約11％高い（Guvenen et al. 2020）</div></div>
+    <div class="kv"><div class="big amber">同じ業界でも</div><div class="lbl">同じ業界で働く労働者を比べても賃金差は大きい。どの仕事にどのスキルの人が就くかが重要</div></div>
+  </div>
+
+  <h3>労働移動と生活の安定</h3>
+  <div class="card">
+    <ul>
+      <li>これから前向きな労働移動だけでなく、<strong>仕方なくの労働移動</strong>が増える。それに伴い、<strong>収入が途切れる</strong>、また<strong>賃金が下がる</strong>と生活に悪影響が出るという問題がある。
+        <ul>
+          <li>晩婚化＋晩産化 → <strong>50歳台や60歳台でも教育資金</strong>が必要。</li>
+          <li>教育と同時に<strong>介護</strong>も。</li>
+        </ul>
+      </li>
+      <li>ふつうの労働者は雇用の流動化などを求めていない → まずは<strong>雇用の安定と処遇の向上</strong>。
+        <ul>
+          <li>安藤も大学院修了後は、研究員 → 任期付き教員 → 任期なし教員と（安定を求めて）移動した。</li>
+          <li>一部のリスクを取る人も、平均的には高い処遇があるから<strong>リスクをとっている</strong>。</li>
+          <li>安定した仕事を提示されても断る人もいるが、<strong>生活との両立</strong>で問題があるからなどが理由。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>雇用形態を転換した理由</h3>
+  <p>実際に雇用形態を転換した人は、どのような理由で転換したのか。<strong>「雇用を安定させたかった」「より高い収入を得たかった」</strong>が圧倒的に多い。</p>
+  <div class="static-graph">
+    <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雇用形態の転換があった者が、その雇用形態に転換した理由。雇用を安定させたかったが79.5％、より高い収入を得たかったが75.6％で多い">
+      <g id="convBars"></g>
+    </svg>
+    <div class="caption">雇用形態の転換があった者が、その雇用形態に転換した理由（全体、n＝1,215、複数回答、％）</div>
+  </div>
+  <p class="src">出所：「労働者の雇用形態による待遇の相違等に関する実態把握のための研究会報告書」図表6-4 <a href="https://www.mhlw.go.jp/content/000179045.pdf" target="_blank" rel="noopener">mhlw.go.jp</a></p>
+
+  <h3>雇用転換を希望していない理由</h3>
+  <p>一方で、非正規で働く人の中には、正社員への転換を<strong>希望しない</strong>人もいる。その理由を雇用形態別に比べると、違いがはっきりする。下のボタンで理由を切り替えてみよう。</p>
+  <div class="static-graph">
+    <div style="margin-bottom:10px;text-align:center;">
+      <div class="seg" id="noConvSeg" style="flex-wrap:wrap;">
+        <button type="button" data-k="0" class="on">都合のよい時間で働けなくなる</button>
+        <button type="button" data-k="1">家事・育児・介護と両立できない</button>
+        <button type="button" data-k="2">現在の雇用形態に満足</button>
+      </div>
+    </div>
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雇用形態別に、雇用転換を希望していない理由の割合を比べる横棒グラフ">
+      <g id="noConvBars"></g>
+    </svg>
+    <div class="caption">雇用形態別、雇用転換を希望していない理由（最も該当する理由、％）</div>
+  </div>
+  <p class="src">出所：同上、従業員図表6-11</p>
+
+  <div class="callout step2">
+    <p>正規・フルタイム・無期の人は、半数以上が<strong>「現在の雇用形態に満足」</strong>を理由に挙げる。これに対して、パートで働く非正規の人は<strong>「自分の都合のよい時間で働けなくなる」「家事・育児・介護等と両立できなくなる」</strong>の割合が高い。正社員になれば雇用は安定するが、その代わりに<strong>時間や働き方の柔軟性を失う</strong>。この取引こそが、次の節で考える「安定」の正体である。</p>
+  </div>
+</section>
+
+<!-- STABILITY -->
+<section id="stability">
+  <h2 class="section-title"><span class="step-badge s-amber">安定</span>これからの安定とは ― 暗黙の契約</h2>
+
+  <h3>これまでの「安定」</h3>
+  <div class="card">
+    <ul>
+      <li>大企業の正社員は「雇用が安定している」と言われることが多い。これまで<strong>公務員や大企業の正社員</strong>として働くことが「安定」した働き方と捉えられることが多かった。
+        <ul>
+          <li>大企業の場合、<strong>仕事内容・勤務地・労働時間について無限定な働き方</strong>をすることの対価としての安定した雇用。</li>
+          <li>起業するなどは、リスクを取る代わりにリターンを受け取る<strong>ギャンブルとしての性格</strong>がある。</li>
+        </ul>
+      </li>
+      <li>人々は安定を求めている。
+        <ul>
+          <li>しかし<strong>共働きの夫婦がふたりとも無限定な働き方をすることは非現実的</strong>。</li>
+          <li>また<strong>労働移動が避けられない時代</strong>になった → 変化が激しいこれからの時代に、どのようにして生活の安定を実現するのか？</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>安定を経済学で考える：暗黙の契約</h3>
+  <p><strong>暗黙の契約理論</strong>（Azariadis 1975, Baily 1974）では、<strong>リスク中立的な企業</strong>が、<strong>リスク回避的な労働者</strong>に「雇用と賃金の保険」を提供していると考える。企業は業績の変動を引き受け、労働者は安定した賃金を受け取る。</p>
+
+  <div class="static-graph">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="会社が労働者に雇用の保障と安定した賃金という保険を提供し、労働者は無限定な働き方という保険料を支払う関係を示す図">
+      <defs>
+        <marker id="arrC1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0e7490"/></marker>
+        <marker id="arrC2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker>
+      </defs>
+      <!-- 会社 -->
+      <rect x="30" y="60" width="170" height="130" rx="14" fill="#eef2ff" stroke="#1e3a8a" stroke-width="1.5"/>
+      <text x="115" y="100" font-size="18" font-weight="700" fill="#1e3a8a" text-anchor="middle">会社</text>
+      <text x="115" y="128" font-size="12.5" fill="#4b5563" text-anchor="middle">リスク中立的</text>
+      <text x="115" y="150" font-size="12" fill="#6b7280" text-anchor="middle">業績の変動を</text>
+      <text x="115" y="166" font-size="12" fill="#6b7280" text-anchor="middle">引き受ける</text>
+      <!-- 労働者 -->
+      <rect x="480" y="60" width="170" height="130" rx="14" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+      <text x="565" y="100" font-size="18" font-weight="700" fill="#0e7490" text-anchor="middle">労働者</text>
+      <text x="565" y="128" font-size="12.5" fill="#4b5563" text-anchor="middle">リスク回避的</text>
+      <text x="565" y="150" font-size="12" fill="#6b7280" text-anchor="middle">賃金は安定</text>
+      <!-- 上の矢印：保険 -->
+      <line x1="210" y1="85" x2="470" y2="85" stroke="#0e7490" stroke-width="2.2" marker-end="url(#arrC1)"/>
+      <text x="340" y="60" font-size="13" font-weight="700" fill="#0e7490" text-anchor="middle">保険を提供</text>
+      <text x="340" y="77" font-size="12" fill="#4b5563" text-anchor="middle">雇用の保障・安定した賃金</text>
+      <!-- 下の矢印：保険料 -->
+      <line x1="470" y1="165" x2="210" y2="165" stroke="#b45309" stroke-width="2.2" marker-end="url(#arrC2)"/>
+      <text x="340" y="155" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle">保険料を支払う ＝ 無限定な働き方</text>
+      <rect x="230" y="180" width="70" height="26" rx="13" fill="#fff7ed" stroke="#fed7aa"/>
+      <text x="265" y="198" font-size="12" fill="#92400e" text-anchor="middle">仕事内容</text>
+      <rect x="305" y="180" width="70" height="26" rx="13" fill="#fff7ed" stroke="#fed7aa"/>
+      <text x="340" y="198" font-size="12" fill="#92400e" text-anchor="middle">勤務地</text>
+      <rect x="380" y="180" width="70" height="26" rx="13" fill="#fff7ed" stroke="#fed7aa"/>
+      <text x="415" y="198" font-size="12" fill="#92400e" text-anchor="middle">労働時間</text>
+      <text x="340" y="240" font-size="12" fill="#6b7280" text-anchor="middle">無限定な働き方 ＝ 保険料を「柔軟性」で支払う契約</text>
+    </svg>
+  </div>
+
+  <p>なぜ保険が成り立つのか。リスク回避的な労働者にとっては、<strong>変動する賃金の期待値</strong>よりも少し低くても、<strong>確実な賃金</strong>のほうが好ましい。その差額が<strong>リスク・プレミアム</strong>であり、リスク中立的な企業はこれを受け取って変動を引き受けることができる。前期の期待効用の考え方で確かめてみよう。</p>
+  <div class="math-block">$$E[w] = (1-p)\,w_H + p\,w_L, \qquad u(CE) = (1-p)\,u(w_H) + p\,u(w_L)$$
+  $$\text{リスク・プレミアム} = E[w] - CE$$</div>
+
+  <div class="graph-wrap">
+    <div class="graph-title">シミュレーター ― 企業が「賃金の保険」を提供できる理由</div>
+    <canvas id="icCanvas" aria-label="横軸に賃金、縦軸に効用をとり、効用関数、好況と不況の賃金を結ぶ弦、期待賃金と確実性等価を示す図"></canvas>
+    <div class="legend">
+      <span class="item"><span class="sw" style="background:#0e7490"></span>効用 $u(w)$</span>
+      <span class="item"><span class="sw" style="background:#9ca3af"></span>好況・不況を結ぶ弦（期待効用）</span>
+      <span class="item"><span class="dot" style="background:#b45309"></span>期待賃金 $E[w]$</span>
+      <span class="item"><span class="dot" style="background:#047857"></span>確実性等価 $CE$</span>
+    </div>
+    <div class="controls">
+      <div class="control">
+        <label>好況時の賃金 $w_H$（万円／月） <span class="readout" id="icHOut">40</span></label>
+        <input type="range" id="icH" min="20" max="60" step="1" value="40">
+      </div>
+      <div class="control">
+        <label>不況時の賃金 $w_L$（万円／月） <span class="readout" id="icLOut">10</span></label>
+        <input type="range" id="icL" min="4" max="40" step="1" value="10">
+      </div>
+      <div class="control">
+        <label>不況になる確率 $p$ <span class="readout" id="icPOut">0.50</span></label>
+        <input type="range" id="icP" min="0" max="1" step="0.05" value="0.5">
+      </div>
+      <div class="control">
+        <label>リスク回避度 $\rho$ <span class="readout" id="icROut">1.0</span></label>
+        <input type="range" id="icR" min="0" max="3" step="0.1" value="1">
+      </div>
+    </div>
+    <div class="verdict" id="icVerdict"></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);">効用関数は相対的リスク回避度一定（CRRA）型 $u(w) = \dfrac{w^{1-\rho}-1}{1-\rho}$（$\rho=1$ のときは $\ln w$）を用いた。$\rho = 0$ はリスク中立である。</p>
+
+  <div class="callout">
+    <p>これまでの日本型雇用では、労働者は<strong>無限定な働き方</strong>という形で「保険料」を払い、企業から雇用の保障を受けてきた。しかし、<strong>共働きでふたりとも保険料を払うことはできなくなった</strong>。そこで、保険の提供主体を<strong>企業から社会へ</strong>（雇用保険・教育訓練給付など）移すことが考えられる。</p>
+    <p>キーワードは、<strong>「職の保障」から「所得と雇用可能性の保障」へ</strong>。柔軟な労働市場と手厚いセーフティネット・職業訓練を組み合わせる考え方を<strong>フレキシキュリティ</strong>（flexibility ＋ security）という。</p>
+  </div>
+</section>
+
+<!-- REFORM -->
+<section id="reform">
+  <h2 class="section-title"><span class="step-badge s-teal">制度</span>人手不足＋技術的失業と労働基準法</h2>
+
+  <h3>人手不足と技術的失業の共存</h3>
+  <div class="card">
+    <ul>
+      <li>これからの社会変化は、<strong>人口減少による人手不足</strong>と<strong>技術進歩による失業</strong>。</li>
+      <li>失業した人が人手不足の業界で働けば良い？ → 今後は、<strong>人手不足と技術的失業の共存</strong>が問題。
+        <ul>
+          <li>原因は<strong>スキルのミスマッチ</strong>：求職者のスキルと求人企業の要求にズレがある。</li>
+        </ul>
+      </li>
+      <li>これからの社会は、人手不足と失業の問題にどう対応するのか？
+        <ul>
+          <li>2019年4月から実施された<strong>「働き方改革」</strong>の背景。</li>
+          <li><strong>労働基準関係法制研究会報告書</strong>（2025年1月）→ 改正案は2026年通常国会への提出が見送り。議論は継続中。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>労働基準法改正の議論のポイント</h3>
+  <ul class="issue-list">
+    <li><div><div class="nm">勤務間インターバル制度</div><div class="ds">終業から次の始業までに一定の休息時間を確保する。研究会では義務化の方向性</div></div></li>
+    <li><div><div class="nm">連続勤務規制</div><div class="ds">連続勤務の上限を13日に。医療・介護・小売・飲食のシフト制に影響</div></div></li>
+    <li><div><div class="nm">「つながらない権利」</div><div class="ds">時間外の連絡ルール</div></div></li>
+    <li><div><div class="nm">裁量労働制</div><div class="ds">効果検証を踏まえて、濫用防止を前提とした対象業務の拡大と労働者保護</div></div></li>
+    <li><div><div class="nm">変形労働時間制</div><div class="ds">建設業などでは、30日前にシフトを確定するのは現実的ではないとの指摘</div></div></li>
+    <li><div><div class="nm">副業・兼業</div><div class="ds">労働時間の通算と割増賃金。高齢者やスポットワークにも影響（次回のテーマ）</div></div></li>
+    <li><div><div class="nm">テレワーク・フレックスタイム制</div><div class="ds">テレワーク日のみなど、部分的なフレックスタイム制の可否</div></div></li>
+    <li><div><div class="nm">その他、2025年1月から分科会で議論してきた論点</div><div class="ds">過半数代表者等（選出手続の適正化と代表者に対する支援）、法定休日（法定休日と所定休日の混在から法定休日の特定へ）、年次有給休暇（賃金算定方式：平均賃金、通常の賃金、標準報酬月額の1/30）等</div></div></li>
+  </ul>
+
+  <div class="discuss">
+    <div class="discuss-head"><span class="discuss-tag">考えてみよう</span></div>
+    <div class="discuss-q">「勤務間インターバル」や「連続勤務規制」を義務化すると、働く人の健康は守られる。一方で、人手不足の業界ではどのような問題が起こりうるだろうか。</div>
+    <div class="discuss-hint">
+      <details>
+        <summary>考えるヒント</summary>
+        <div class="body">
+          <ul>
+            <li>一人あたりの労働時間に上限がかかると、<strong>同じ仕事量をこなすのに必要な人数</strong>が増える。<a class="inline-link" href="#population">01</a>の「延べ労働時間 ＝ 人数 × 時間」を思い出そう。</li>
+            <li>シフト制の職場では、人が集まらないと<strong>営業時間の短縮やサービスの縮小</strong>（＝仕事を減らす対策）につながるかもしれない。</li>
+            <li>一方で、長時間労働が是正されれば、<strong>これまで働けなかった人</strong>（子育て中の人など）が働きやすくなり、働き手が増える可能性もある。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- WORKER -->
+<section id="worker">
+  <h2 class="section-title"><span class="step-badge s-amber">働く人</span>働く人に求められること</h2>
+
+  <h3>時代の変化に対応するために</h3>
+  <p>働き方の変化が激しい時代には、労働移動が活発になる。人口減少による人手不足と技術進歩による失業のもとで、新しい仕事に<strong>請われて移動する</strong>、または<strong>仕方なく移動する</strong>ことが求められる。今後も必要なのは、次のような仕事である。</p>
+  <div class="split">
+    <div class="card">
+      <h4>機械を使いこなして知的に働く仕事</h4>
+      <p style="font-size:14px;">タスク・モデルでいえば、<strong>非定型的な認知タスク</strong>。機械に補完されて生産性が上がる。</p>
+    </div>
+    <div class="card">
+      <h4>人間にしか出来ない感情労働やサービスの仕事</h4>
+      <p style="font-size:14px;">介護・接客など、<strong>非定型的な手作業・対人タスク</strong>。状況に応じた判断や共感が必要になる。</p>
+    </div>
+  </div>
+
+  <h3>学び続ける意欲を持つ</h3>
+  <div class="card">
+    <ul>
+      <li><strong>70歳まで働き続ける</strong>のが当たり前になる。</li>
+      <li>今の仕事が<strong>いつまであるのか</strong>を考える。これからどのような分野を学べば、今の仕事を活かせるのかも重要。</li>
+      <li><strong>副業や兼業</strong>を通じてスキルを身につけることは、キャリア形成上も有益に。</li>
+      <li>AI時代には、論理的思考力・批判的思考力・コミュニケーション能力などの<strong>「メタスキル」</strong>の重要性が高まる可能性（令和8年版労働経済白書）。</li>
+    </ul>
+  </div>
+  <div class="note">
+    <span class="tag">制度</span>
+    <p>2025年10月に<strong>教育訓練休暇給付金</strong>が創設された。働きながら無給の休暇（連続30日以上）を取って学ぶ間の生活費を、<strong>雇用保険</strong>から支給する。<a class="inline-link" href="#stability">04</a>で見た「保険の提供主体を企業から社会へ」の一例である。</p>
+  </div>
+
+  <h3>得意分野を作る ― 組み合わせで希少になる</h3>
+  <p>一つの分野で上位1％に入るのは難しい。しかし、<strong>上位10％に入る分野が二つ</strong>あれば、それらが独立であれば $0.1 \times 0.1 = 0.01$ で<strong>1％</strong>になる。<strong>上位20％に入る分野が三つ</strong>あれば、$0.2^3 = 0.008$ で<strong>1％以下</strong>になる。</p>
+
+  <div class="graph-wrap">
+    <div class="graph-title">試してみよう ― 得意分野の組み合わせで何人に1人になるか</div>
+    <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="得意分野の数だけ三角形を並べ、それぞれ上位の割合を塗った図">
+      <g id="rareChart"></g>
+    </svg>
+    <div class="controls">
+      <div class="control">
+        <label>各分野で上位何％に入るか <span class="readout" id="rpOut">20%</span></label>
+        <input type="range" id="rp" min="1" max="50" step="1" value="20">
+      </div>
+      <div class="control">
+        <label>得意分野の数 <span class="readout" id="rkOut">3</span></label>
+        <input type="range" id="rk" min="1" max="4" step="1" value="3">
+      </div>
+    </div>
+    <div class="verdict" id="rareVerdict"></div>
+  </div>
+
+  <div class="callout step2">
+    <p>関連の薄い分野を組み合わせるほど希少になる（分野どうしが強く相関していると、同じ人が両方で上位に入りやすいので希少にならない）。ただし、価値は<strong>「その組み合わせに需要があるか（補完性）」</strong>で決まる。Lazear（2005）は、起業家には多くの分野をそこそここなせる<strong>「何でも屋（jack-of-all-trades）」</strong>の性格があることを示した。</p>
+  </div>
+</section>
+
+<!-- ENVIRONMENT -->
+<section id="environment">
+  <h2 class="section-title"><span class="step-badge s-teal">環境変化</span>これからの労働環境の変化</h2>
+
+  <p>これからの労働環境の変化を、<strong>【変化】</strong>と<strong>【対策】</strong>の組で整理しよう。</p>
+
+  <h3>労働移動の増加</h3>
+  <div class="change-row">
+    <div class="chg">
+      <span class="lbl">変化</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>これからは労働移動が活発になる</strong></p>
+      <ul>
+        <li>人手不足により「請われて移動する」<strong>前向きな労働移動</strong></li>
+        <li>技術的失業により「仕方なく移動する」<strong>後ろ向きの労働移動</strong>
+          <ul>
+            <li>中高年になってから新たな職探し？</li>
+            <li>会社や仕事内容が変わる際に、収入が途切れる？</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="cnt">
+      <span class="lbl">対策</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>社会的な適材適所の実現と労使のマッチング支援</strong></p>
+      <ul>
+        <li>労働者による努力と企業による直接的な人材育成</li>
+        <li><strong>内部労働市場中心から、外部労働市場の活用へ</strong></li>
+        <li>公的機関や人材サービスによる支援が不可欠</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>経験者採用の増加</h3>
+  <div class="change-row">
+    <div class="chg">
+      <span class="lbl">変化</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>職能給的よりも職務給的（いわゆるジョブ型）の働き方が増える</strong></p>
+      <ul>
+        <li>同一労働同一賃金</li>
+        <li>企業が、未経験者や離職者を<strong>自前で育てることが少なくなる</strong></li>
+      </ul>
+    </div>
+    <div class="cnt">
+      <span class="lbl">対策</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>人的資本形成のための人材育成と教育訓練</strong></p>
+      <ul>
+        <li>労働者が主体的に取り組むことには限界がある</li>
+        <li>公的機関、労働組合、大学、人材ビジネスなどによるサポートが重要</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>なぜ企業は人材を自前で育てなくなるのか。前期に学んだ<strong>一般的訓練</strong>と<strong>企業特殊的訓練</strong>の理論で考えてみよう。</p>
+  <div class="steps3">
+    <div class="stepbox">
+      <div class="sn">1964</div>
+      <div class="st">Becker：労働者が負担する</div>
+      <div class="sd">どの企業でも役立つ一般的な訓練の費用は、競争的な労働市場では企業ではなく<strong>労働者が負担</strong>する。訓練後に他社へ移られると、企業は費用を回収できないからである。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">1999</div>
+      <div class="st">Acemoglu &amp; Pischke：摩擦があるから</div>
+      <div class="sd">現実に企業が負担してきたのは、<strong>転職しにくさ（労働市場の摩擦）</strong>があったから。転職が容易になるほど、企業が負担する誘因は弱まる。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn amber">1997</div>
+      <div class="st">Acemoglu：訓練は過少になる</div>
+      <div class="sd">訓練した人材が引き抜かれると、その利益は他社に流れる（<strong>外部性</strong>）。そのため社会全体で訓練が<strong>過少</strong>になる。</div>
+    </div>
+  </div>
+  <div class="callout">
+    <p>労働移動が活発になるほど、企業は人材育成の費用を回収しにくくなり、訓練をしなくなる。一方で、労働者が自分で費用を負担するには、お金や時間の制約がある。訓練の便益が社会に広がる<strong>外部性</strong>があるので、<strong>公的支援に根拠がある</strong>。前回の「外部性の内部化」と同じ発想である。</p>
+  </div>
+
+  <h3>企業内マネジメントの変化</h3>
+  <div class="change-row">
+    <div class="chg">
+      <span class="lbl">変化</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>人手不足への対策としての人材の多様化</strong></p>
+      <ul>
+        <li>企業の視点からは、<strong>採用とリテンション（＝離職抑制）</strong>が経営の鍵に</li>
+        <li>売り手市場の時代＝多様な雇用形態の受け入れ
+          <ul>
+            <li>職務限定、勤務地限定、残業不可・時間外労働の上限あり等</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="cnt">
+      <span class="lbl">対策</span>
+      <p style="margin:4px 0;font-size:14.5px;"><strong>管理職や中堅以上の社員の意識改革</strong></p>
+      <ul>
+        <li>上司には<strong>マネジメント能力</strong>が問われることになる</li>
+        <li>多様な労働者に対して、<strong>納得感のある評価と処遇</strong>を行えるのか</li>
+        <li>これまでの働き方に順応してきた既存の労働者が、多様な働き方をする他の労働者を許容できるのか</li>
+        <li>許容できない上司や同僚には、重要なポジションから外れてもらう必要がある</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT -->
+<section id="student">
+  <h2 class="section-title"><span class="step-badge s-amber">学生</span>学生が直面する課題</h2>
+
+  <h3>大学生の就職活動</h3>
+  <div class="card">
+    <ul>
+      <li>多くの学生は、<strong>ゲームのルールを知らずに</strong>就活をはじめる。大企業や有名企業を受けたがる＋格好が良い職種を希望する。</li>
+      <li><strong>二極化する学生</strong>：大手から複数の内定を得る学生と、最初から失敗して、理由がわからず、やる気を失う学生。</li>
+      <li>就職活動は難しい？ → なぜ難しいのか。大学入試とは違い、<strong>偏差値がない、直接の費用がない、期間が長い</strong>。</li>
+    </ul>
+  </div>
+
+  <h3>不安なのは学生だけではない</h3>
+  <div class="split">
+    <div class="card">
+      <h4>学生の不安</h4>
+      <ul style="font-size:14px;">
+        <li>自分にどのような仕事が向いているのか</li>
+        <li>自分に何ができるのか</li>
+        <li>希望の企業や職種で採用されるか</li>
+        <li>賃金や労働時間などの働き方は納得できる範囲か</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>企業の採用担当者の不安</h4>
+      <ul style="font-size:14px;">
+        <li>採用目標人数を確保できるのか</li>
+        <li>内定を出しても辞退されてしまう可能性</li>
+        <li>実際に入社しても活躍しない</li>
+        <li>すぐに離職してしまう</li>
+        <li>現場から「誰があんな新人を採用したんだ！」と怒られたくない</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kv-grid">
+    <div class="kv"><div class="big">33.8<span style="font-size:13px;"> ％</span></div><div class="lbl">大卒の就職後3年以内離職率</div></div>
+    <div class="kv"><div class="big amber">57.5 ％ ／ 27.0 ％</div><div class="lbl">事業所規模別の3年以内離職率（5人未満 ／ 1,000人以上）</div></div>
+  </div>
+
+  <h3>企業側の不安 ― 大卒者を雇うのはとても高い買い物</h3>
+  <p>正社員として大卒者を雇用した場合、定年までに平均して<strong>約2億8000万円</strong>の賃金を払う。社会保険料やオフィススペースなどの負担も考えると、乱暴に1.5倍とすると<strong>4億2千万円</strong>になる。</p>
+  <div class="graph-wrap">
+    <div class="graph-title">試してみよう ― 一人を雇う総費用</div>
+    <div class="controls" style="margin-top:0;">
+      <div class="control">
+        <label>定年までの賃金総額（億円） <span class="readout" id="hcWOut">2.8</span></label>
+        <input type="range" id="hcW" min="1.5" max="4" step="0.1" value="2.8">
+      </div>
+      <div class="control">
+        <label>賃金以外の負担を含めた倍率 <span class="readout" id="hcMOut">1.5 倍</span></label>
+        <input type="range" id="hcM" min="1" max="2" step="0.05" value="1.5">
+      </div>
+    </div>
+    <div class="verdict" id="hcVerdict"></div>
+  </div>
+  <div class="callout">
+    <p>ふつうの人は、数千万円のマンションを買う場合でもとても慎重になるはず。企業はそれより<strong>はるかに高い買い物</strong>を、短い面接で決めなければならない。だから求職者である学生には、<strong>企業側の不安を軽減し、安心して採用できる状況を作るための情報提供</strong>が求められている。前期で学んだ<strong>情報の非対称性</strong>と<strong>シグナリング</strong>の問題である。</p>
+  </div>
+
+  <h3>相手の不安解消が就職活動の鍵</h3>
+  <div class="discuss">
+    <div class="discuss-head"><span class="discuss-tag">考えてみよう</span></div>
+    <div class="discuss-q">企業は何を知りたくて、「自己PR（またはガクチカ）」や「志望動機」を質問しているのだろうか。</div>
+    <div class="discuss-hint">
+      <details>
+        <summary>考えるヒント</summary>
+        <div class="body">
+          <ul>
+            <li><strong>自己PR・ガクチカ</strong>：すごい経験の自慢を聞きたいのではない。課題をどう見つけ、どう考えて行動し、何を学んだのかから、<strong>入社後に活躍するか</strong>を推測したい。</li>
+            <li><strong>志望動機</strong>：自社の事業を理解しているか、<strong>すぐに辞めてしまわないか</strong>（内定辞退や早期離職のリスク）を確かめたい。</li>
+            <li>どちらも、上で見た<strong>採用担当者の不安</strong>のどれを解消する情報なのかを意識して答えると伝わりやすい。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <h3>面接の評価シートで自己点検</h3>
+  <p>企業の面接では、次のような評価シートが使われることがある。項目を見ると、企業が<strong>何を確かめようとしているか</strong>がわかる。今の自分を5段階で自己評価してみよう（選んだ値はこのブラウザに保存される）。</p>
+  <div class="table-wrap">
+    <table class="sheet" id="sheetTable">
+      <thead><tr><th>項目</th><th></th><th>チェックポイント</th><th>自己評価</th></tr></thead>
+      <tbody id="sheetBody"></tbody>
+    </table>
+  </div>
+  <div class="card cat-bars" id="catBars"></div>
+
+  <h3>キャリアの考え方 ― キャリアとは轍（わだち）</h3>
+  <div class="card">
+    <ul>
+      <li>キャリアとは、歩いてきた後に残る<strong>轍（わだち）</strong>のようなものである。</li>
+      <li>どのような進路を考えるのか。子どもには無限の可能性がある。しかし、<strong>何かを選択するということは、それ以外の可能性を消していくこと</strong>。</li>
+      <li><strong>多くの選択肢を残しておくこと</strong>と<strong>決めた分野に集中すること</strong>のバランスが大切。</li>
+      <li><strong>望む進路から逆算する形でのエビデンス作り</strong>：どの学部に進学して何を学ぶのか、アルバイトやサークル活動の選択、ワークライフバランスの考え方。</li>
+    </ul>
+  </div>
+
+  <h3>働き方を変えていく新技術 ― 経済学部で学ぶことを活かす</h3>
+  <p>経済学部で学ぶことのメリットを最大限に活かしたい。これまでの講義で扱った分析の道具は、実際に働き方を変えつつある。</p>
+  <div class="steps3">
+    <div class="stepbox">
+      <div class="sn" style="font-size:15px;">回帰分析</div>
+      <div class="st">ミンサー型賃金関数</div>
+      <div class="sd">修学年数・経験年数で賃金を説明する。人事データの分析で、処遇の根拠を示す。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn" style="font-size:15px;">マッチング</div>
+      <div class="st">マッチング理論</div>
+      <div class="sd">医師臨床研修マッチングはGale-Shapleyアルゴリズムで行われている。就職活動や社内の配属決定でも使われるかもしれない。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn amber" style="font-size:15px;">投票</div>
+      <div class="st">マジョリティ・ジャッジメント</div>
+      <div class="sd">評価の中央値で選ぶ。極端な意見ではなく納得度の高い選択肢が選ばれ、極端な回答で結果を操作しにくい。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TASK -->
+<section id="task">
+  <h2 class="section-title"><span class="step-badge s-teal">検討課題</span>なくなる仕事・増える仕事</h2>
+
+  <div class="steps3">
+    <div class="stepbox">
+      <div class="sn">1</div>
+      <div class="st">一人で考える</div>
+      <div class="sd">まず自分の考えを回答欄に書き出す。身近な仕事の具体例から考えるとよい。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">2</div>
+      <div class="st">グループで比べる</div>
+      <div class="sd">同じ職種でも、タスクの分類が人によって違うところを話し合う。</div>
+    </div>
+    <div class="stepbox">
+      <div class="sn">3</div>
+      <div class="st">理論とつなげる</div>
+      <div class="sd">置換・生産性・復元の3つの効果、形式知と暗黙知のどれで説明できるかを考える。</div>
+    </div>
+  </div>
+
+  <h3>検討課題1 ― どのような仕事が、いつ頃なくなるのか</h3>
+  <div class="card">
+    <p style="margin-top:0;">これから<strong>どのような仕事がいつ頃なくなるのか</strong>を検討してみよう。あわせて、<strong>これから増える仕事</strong>とはどのようなものかも考えてみよう。</p>
+  </div>
+  <div class="answer-box">
+    <div class="answer-head"><span class="answer-tag">あなたの考え</span><span class="answer-id">TASK 1</span></div>
+    <div class="answer-q">なくなる仕事（時期と理由）と、増える仕事（理由）を書いてみよう。</div>
+    <textarea class="answer-input" data-qid="t1" placeholder="なくなる仕事：&#10;　いつ頃：&#10;　理由：&#10;増える仕事：&#10;　理由："></textarea>
+    <span class="answer-save" data-for="t1">未保存</span>
+  </div>
+
+  <h3>検討課題2 ― 志望職種のタスクを分類する</h3>
+  <div class="card">
+    <p style="margin-top:0;"><a class="inline-link" href="https://shigoto.mhlw.go.jp/User/" target="_blank" rel="noopener">job tag（職業情報提供サイト）</a>で志望職種を1つ選び、<strong>主なタスクを5〜8個</strong>書き出す。各タスクを<strong>「AIに代替されやすい／補完される／人にしかできない」</strong>と<strong>「形式知／暗黙知」</strong>で分類しよう。</p>
+  </div>
+  <div class="answer-box">
+    <div class="answer-head"><span class="answer-tag">分類ツール</span><span class="answer-id">TASK 2</span></div>
+    <div class="answer-q" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">志望職種：<input type="text" id="jobName" placeholder="例：営業職" style="flex:1 1 200px;font-family:inherit;font-size:14px;padding:5px 8px;border:1px solid #e5d99c;border-radius:6px;background:#fffef9;color:var(--ink);"></div>
+    <div class="table-wrap">
+      <table class="tasks">
+        <thead><tr><th style="width:36px;">#</th><th>タスク</th><th style="width:150px;">AIとの関係</th><th style="width:100px;">知識の種類</th></tr></thead>
+        <tbody id="taskRows"></tbody>
+      </table>
+    </div>
+    <p style="margin:6px 0;"><button type="button" class="small-btn" id="addTask">行を追加</button> <span class="answer-save" id="taskSave">未保存</span></p>
+    <div class="table-wrap">
+      <table class="tally">
+        <thead><tr><th></th><th>形式知</th><th>暗黙知</th><th>計</th></tr></thead>
+        <tbody id="tallyBody"></tbody>
+      </table>
+    </div>
+    <div class="verdict" id="tallyVerdict" style="background:#fffef9;"></div>
+  </div>
+  <div class="discuss-hint" style="margin:-4px 0 10px;">
+    <details>
+      <summary>考えるヒント</summary>
+      <div class="body">
+        <p><strong>代替されやすい</strong>：手順書に書ける定型的なタスク（データ入力、定型文書の作成、問い合わせへの定型回答など）。</p>
+        <p><strong>補完される</strong>：AIを道具として使うことで速く・正確にできるタスク（資料の下調べ、分析、企画の叩き台づくりなど）。最終判断は人が行う。</p>
+        <p><strong>人にしかできない</strong>：相手の感情を読み取って信頼関係を築く、前例のない状況で責任を持って判断する、身体を使って状況に応じて動くタスクなど。</p>
+        <p>「形式知 × 代替されやすい」のマスにタスクが多い職種は、入口業務が減るかもしれない。その場合、<strong>暗黙知をどこで身につけるか</strong>を考えよう。</p>
+      </div>
+    </details>
+  </div>
+  <div class="answer-box">
+    <div class="answer-head"><span class="answer-tag">あなたの考え</span><span class="answer-id">TASK 3</span></div>
+    <div class="answer-q">分類の結果から、志望職種の仕事の中身はこれからどう入れ替わると考えられるか。そのために学生のうちに何を身につけるべきかを書いてみよう。</div>
+    <textarea class="answer-input" data-qid="t3" placeholder="仕事の中身の変化：&#10;身につけるべきこと："></textarea>
+    <span class="answer-save" data-for="t3">未保存</span>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <h2 class="section-title"><span class="step-badge summary">SUMMARY</span>まとめと次回までの課題</h2>
+
+  <h3>本日の流れ</h3>
+  <ul>
+    <li><strong>人口減少</strong>：人口は2008年の<strong>1億2808万人</strong>をピークに急減し、2070年には8700万人に。世代間・地域間で<strong>不均衡</strong>に減る。働き手は過去最高の7004万人だが、短時間化で<strong>延べ労働時間は減少</strong>しており、人手不足は<strong>構造的</strong>。</li>
+    <li><strong>技術進歩</strong>：技術は職業ではなく<strong>タスク</strong>を置き換える。雇用への影響は<strong>置換効果（−）と生産性効果・復元効果（＋）</strong>の大きさで決まる。生成AIは若者の<strong>形式知に依存する入口業務</strong>を減らしている可能性がある。</li>
+    <li><strong>労働移動</strong>：請われて移る<strong>前向きな移動</strong>と、仕方なく移る<strong>後ろ向きな移動</strong>がともに増える。<strong>スキルのミスマッチ</strong>のため、人手不足と技術的失業が<strong>共存</strong>する。</li>
+    <li><strong>安定</strong>：大企業正社員の安定は、<strong>無限定な働き方という保険料</strong>と引き換えの<strong>暗黙の契約</strong>だった。共働き時代には、保険の提供主体を<strong>企業から社会へ</strong>移し、<strong>所得と雇用可能性の保障</strong>（フレキシキュリティ）へ。</li>
+    <li><strong>働く人</strong>：学び続ける意欲と<strong>メタスキル</strong>。<strong>独立で補完的な得意分野の組み合わせ</strong>が希少性を生む。</li>
+    <li><strong>環境変化</strong>：移動が容易になるほど企業は一般的訓練を負担しなくなり、訓練は<strong>過少</strong>になる → <strong>公的支援の根拠</strong>。企業内では多様な人材を活かす<strong>マネジメント能力</strong>が問われる。</li>
+    <li><strong>学生</strong>：就職活動は、高い買い物をする<strong>企業側の不安</strong>を解消する情報提供の場。キャリアは<strong>轍</strong>であり、望む進路から逆算してエビデンスを作る。</li>
+  </ul>
+
+  <div class="callout">
+    <p>今回の通奏低音は、<strong>「変化を止めることはできないが、変化に伴うリスクを誰がどう引き受けるかは設計できる」</strong>ということ。これまでは企業が雇用を保障し、労働者は柔軟性で保険料を払ってきた。労働移動が避けられない時代には、<strong>働く人自身の学び直し</strong>と、それを支える<strong>社会の仕組み</strong>（雇用保険、教育訓練給付、マッチング支援）の両方が、新しい「安定」を形づくる。</p>
+  </div>
+
+  <h3>主要な参考文献</h3>
+  <ul style="font-size:14px;">
+    <li>Acemoglu, D. (1997) "Training and Innovation in an Imperfect Labour Market," <i>Review of Economic Studies</i>, 64(3)</li>
+    <li>Acemoglu, D. and J.-S. Pischke (1999) "Beyond Becker: Training in Imperfect Labour Markets," <i>Economic Journal</i>, 109(453)</li>
+    <li>Azariadis, C. (1975) "Implicit Contracts and Underemployment Equilibria," <i>Journal of Political Economy</i>, 83(6)</li>
+    <li>Baily, M. N. (1974) "Wages and Employment under Uncertain Demand," <i>Review of Economic Studies</i>, 41(1)</li>
+    <li>Becker, G. S. (1964) <i>Human Capital</i>, Columbia University Press</li>
+    <li>Guvenen, F., B. Kuruscu, S. Tanaka and D. Wiczer (2020) "Multidimensional Skill Mismatch," <i>American Economic Journal: Macroeconomics</i>, 12(1), pp.210-244</li>
+    <li>Lazear, E. P. (2005) "Entrepreneurship," <i>Journal of Labor Economics</i>, 23(4)</li>
+    <li>厚生労働省「労働者の雇用形態による待遇の相違等に関する実態把握のための研究会報告書」</li>
+    <li>国立社会保障・人口問題研究所「日本の地域別将来推計人口（令和5年推計）」</li>
+  </ul>
+
+  <div class="note">
+    <span class="tag">次回までの課題</span>
+    <p>次回は、働き方がこれからどのように変わるのかについての各論として、<strong>兼業・副業</strong>について扱う。</p>
+    <p><strong>事前学習：</strong></p>
+    <ul style="margin:6px 0;">
+      <li><strong>どのような人が、なぜ兼業・副業をしているのか</strong>を調べておくこと（例：本業の収入が少ない人、スキルを身につけたい人、本業以外のやりがいを求める人など、理由ごとに考えてみよう）。</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="tag">メモ</span>
+    <p>検討課題の回答欄・タスク分類・面接評価シートに記入した内容は、ブラウザ内（localStorage）に自動で保存されます。同じ端末・同じブラウザでこのページを再度開けば、続きから読み直せます。</p>
+  </div>
+</section>
+
+<div class="footer">
+  労働経済論 後期第5回「働き方の未来」補助教材<br>
+  日本大学 経済学部 / 安藤至大
+</div>
+
+</div>
+
+<script>
+/* =========================================
+   前回の穴埋め：答えの表示／非表示
+   ========================================= */
+function bindToggle(btnId, cardId, showLabel, hideLabel) {
+  const btn = document.getElementById(btnId);
+  const card = document.getElementById(cardId);
+  btn.addEventListener("click", () => {
+    const hidden = card.classList.toggle("fills-hidden");
+    btn.textContent = hidden ? showLabel : hideLabel;
+  });
+}
+bindToggle("fillToggle", "fillCard", "答えを表示する", "答えを隠す");
+
+/* =========================================
+   SVG ユーティリティ
+   ========================================= */
+const SVGNS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent, text) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const fmt = n => n.toLocaleString("ja-JP");
+const MONO = "JetBrains Mono, monospace";
+
+/* =========================================
+   日本の人口の長期推移（万人）
+   ========================================= */
+(function () {
+  const g = document.getElementById("popChart");
+  const L = 62, R = 600, T = 22, B = 300;
+  const x0 = 1100, x1 = 2130, yMax = 14000;
+  const X = x => L + (x - x0) / (x1 - x0) * (R - L);
+  const Y = y => B - y / yMax * (B - T);
+  // [年, 人口, ラベル]
+  const ACT = [
+    [1185, 750, "鎌倉幕府成立（1185年）750万人程度"], [1338, 818, "室町幕府成立（1338年）818万人"],
+    [1603, 1227, "江戸幕府成立（1603年）1,227万人"], [1730, 3128, "享保改革（1716〜45年）3,128万人"],
+    [1868, 3330, "明治維新（1868年）3,330万人"], [1945, 7199, "終戦（1945年）7,199万人"],
+    [2008, 12808, "2008年にピーク 12,808万人（高齢化率22.1％）"], [2020, 12615, "2020年 12,615万人"]
+  ];
+  const MID = [[2020, 12615, ""], [2050, 10469, "2050年 10,469万人（高齢化率37.1％）"], [2070, 8700, "2070年 8,700万人（高齢化率38.7％）"], [2120, 4973, "2120年（中位推計）4,973万人（高齢化率40.4％）"]];
+  const HIGH = [[2020, 12615], [2120, 7062]], LOW = [[2020, 12615], [2120, 3587]];
+
+  for (let y = 0; y <= yMax; y += 2000) {
+    el("line", { x1: L, x2: R, y1: Y(y), y2: Y(y), stroke: "#eceae3" }, g);
+    el("text", { x: L - 8, y: Y(y) + 4, "font-size": 11, fill: "#6b7280", "text-anchor": "end", "font-family": MONO }, g, fmt(y));
+  }
+  for (let x = 1200; x <= 2100; x += 100) {
+    el("text", { x: X(x), y: B + 18, "font-size": 11, fill: "#6b7280", "text-anchor": "middle", "font-family": MONO }, g, x);
+  }
+  el("line", { x1: L, x2: R, y1: B, y2: B, stroke: "#6b7280", "stroke-width": 1.2 }, g);
+  el("text", { x: L - 8, y: T - 8, "font-size": 11, fill: "#6b7280", "text-anchor": "end" }, g, "（万人）");
+  el("text", { x: R, y: B + 34, "font-size": 11, fill: "#6b7280", "text-anchor": "end" }, g, "（年）");
+
+  const path = pts => pts.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + "," + Y(p[1]).toFixed(1)).join(" ");
+  el("path", { d: path(HIGH), fill: "none", stroke: "#d6a35c", "stroke-width": 1.8, "stroke-dasharray": "5 4" }, g);
+  el("path", { d: path(LOW), fill: "none", stroke: "#d6a35c", "stroke-width": 1.8, "stroke-dasharray": "5 4" }, g);
+  el("path", { d: path(ACT), fill: "none", stroke: "#4b5563", "stroke-width": 2.4 }, g);
+  el("path", { d: path(MID), fill: "none", stroke: "#b45309", "stroke-width": 2.6 }, g);
+  el("text", { x: X(2120) + 4, y: Y(7062) + 4, "font-size": 10.5, fill: "#92400e", "font-family": MONO }, g, "高位 7,062");
+  el("text", { x: X(2120) + 4, y: Y(3587) + 4, "font-size": 10.5, fill: "#92400e", "font-family": MONO }, g, "低位 3,587");
+
+  [...ACT, ...MID.slice(1)].forEach(p => {
+    const isFut = p[0] > 2020;
+    const c = el("circle", { cx: X(p[0]), cy: Y(p[1]), r: p[0] === 2008 ? 6 : 4.5, fill: isFut ? "#b45309" : (p[0] === 2008 ? "#dc2626" : "#4b5563"), stroke: "#fff", "stroke-width": 2 }, g);
+    el("title", {}, c, p[2]);
+  });
+  el("text", { x: X(2008) - 8, y: Y(12808) - 10, "font-size": 11.5, "font-weight": 700, fill: "#b91c1c", "text-anchor": "end" }, g, "2008年ピーク 12,808万人");
+  el("text", { x: X(2070) - 8, y: Y(8700) + 4, "font-size": 11, fill: "#92400e", "text-anchor": "end" }, g, "2070年 8,700万人");
+  el("text", { x: X(1945) - 8, y: Y(7199) + 4, "font-size": 11, fill: "#4b5563", "text-anchor": "end" }, g, "終戦 7,199万人");
+  el("text", { x: X(1868) - 6, y: Y(3330) - 10, "font-size": 11, fill: "#4b5563", "text-anchor": "middle" }, g, "明治維新");
+  el("text", { x: X(1730), y: Y(3128) - 10, "font-size": 11, fill: "#4b5563", "text-anchor": "middle" }, g, "享保改革");
+  el("text", { x: X(1603), y: Y(1227) - 10, "font-size": 11, fill: "#4b5563", "text-anchor": "middle" }, g, "江戸幕府");
+  el("text", { x: X(1185), y: Y(750) - 10, "font-size": 11, fill: "#4b5563", "text-anchor": "middle" }, g, "鎌倉幕府");
+})();
+
+/* =========================================
+   延べ労働時間の計算
+   ========================================= */
+(function () {
+  const g = document.getElementById("hoursChart");
+  const sG = document.getElementById("hrG"), sH = document.getElementById("hrH");
+  const H0 = 42.7;
+  function draw() {
+    const gr = +sG.value / 100, h1 = +sH.value;
+    document.getElementById("hrGOut").textContent = sG.value + "%";
+    document.getElementById("hrHOut").textContent = h1.toFixed(1) + " 時間";
+    while (g.firstChild) g.removeChild(g.firstChild);
+    // 面積＝人数×時間。横＝人数、縦＝時間
+    const baseW = 220, scaleH = 3.0, by = 170;
+    const blocks = [
+      { x: 40, w: baseW, h: H0, col: "#0e7490", t: "2000年", sub: "就業者数 100 × " + H0.toFixed(1) + " 時間" },
+      { x: 370, w: baseW * (1 + gr), h: h1, col: "#b45309", t: "比較年", sub: "就業者数 " + (100 * (1 + gr)).toFixed(0) + " × " + h1.toFixed(1) + " 時間" }
+    ];
+    blocks.forEach(b => {
+      el("rect", { x: b.x, y: by - b.h * scaleH, width: b.w, height: b.h * scaleH, rx: 6, fill: b.col, "fill-opacity": .18, stroke: b.col, "stroke-width": 1.6 }, g);
+      el("text", { x: b.x + 8, y: by - b.h * scaleH + 18, "font-size": 13, "font-weight": 700, fill: b.col }, g, b.t);
+      el("text", { x: b.x + 8, y: by + 16, "font-size": 11.5, fill: "#4b5563", "font-family": MONO }, g, b.sub);
+    });
+    el("line", { x1: 20, x2: 660, y1: by, y2: by, stroke: "#6b7280", "stroke-width": 1.2 }, g);
+    el("line", { x1: 20, x2: 660, y1: by - H0 * scaleH, y2: by - H0 * scaleH, stroke: "#0e7490", "stroke-dasharray": "4 4" }, g);
+    const total = (1 + gr) * h1 / H0 - 1;
+    const need = H0 / h1 - 1;
+    const v = document.getElementById("hrVerdict");
+    v.className = "verdict " + (total >= 0 ? "good" : "bad");
+    v.innerHTML = `延べ労働時間は2000年と比べて <b class="${total >= 0 ? "good" : "bad"}">${total >= 0 ? "+" : ""}${(total * 100).toFixed(1)}%</b>。` +
+      `平均就業時間が ${h1.toFixed(1)} 時間のとき、延べ労働時間を維持するには就業者が <span class="readout">${(need * 100).toFixed(1)}%</span> 増える必要がある。`;
+  }
+  [sG, sH].forEach(s => s.addEventListener("input", draw));
+  draw();
+})();
+
+/* =========================================
+   技術が労働需要に与える3つの効果（滝グラフ）
+   ========================================= */
+(function () {
+  const g = document.getElementById("taskChart");
+  const sD = document.getElementById("teD"), sP = document.getElementById("teP"), sR = document.getElementById("teR");
+  const btns = document.querySelectorAll("#taskSeg button");
+  const PRESET = { replace: [40, 10, 10], balanced: [30, 15, 20], complement: [10, 20, 15] };
+  const L = 50, R = 660, T = 20, B = 240, yMax = 160;
+  const Y = y => B - y / yMax * (B - T);
+  function draw() {
+    const d = +sD.value, p = +sP.value, r = +sR.value;
+    document.getElementById("teDOut").textContent = "−" + d;
+    document.getElementById("tePOut").textContent = "+" + p;
+    document.getElementById("teROut").textContent = "+" + r;
+    while (g.firstChild) g.removeChild(g.firstChild);
+    for (let y = 0; y <= yMax; y += 40) {
+      el("line", { x1: L, x2: R, y1: Y(y), y2: Y(y), stroke: "#eceae3" }, g);
+      el("text", { x: L - 8, y: Y(y) + 4, "font-size": 11, fill: "#6b7280", "text-anchor": "end", "font-family": MONO }, g, y);
+    }
+    el("line", { x1: L, x2: R, y1: B, y2: B, stroke: "#6b7280", "stroke-width": 1.2 }, g);
+    const end = 100 - d + p + r;
+    // [ラベル, 下端, 上端, 色]
+    const bars = [
+      ["導入前", 0, 100, "#64748b"],
+      ["① 置換効果", 100 - d, 100, "#b45309"],
+      ["② 生産性効果", 100 - d, 100 - d + p, "#0e7490"],
+      ["③ 復元効果", 100 - d + p, end, "#1e3a8a"],
+      ["導入後", 0, end, end >= 100 ? "#047857" : "#b91c1c"]
+    ];
+    const bw = 80, gap = (R - L - bw * 5) / 6;
+    bars.forEach((b, i) => {
+      const x = L + gap + i * (bw + gap);
+      const h = Math.max(Y(b[1]) - Y(b[2]), 1);
+      el("rect", { x, y: Y(b[2]), width: bw, height: h, rx: 4, fill: b[3], "fill-opacity": i === 0 || i === 4 ? .85 : .75 }, g);
+      const val = i === 0 ? 100 : i === 1 ? -d : i === 2 ? p : i === 3 ? r : end;
+      el("text", { x: x + bw / 2, y: Y(b[2]) - 6, "font-size": 12, "font-weight": 700, fill: "#1f2937", "text-anchor": "middle", "font-family": MONO }, g, (i > 0 && i < 4 && val >= 0 ? "+" : "") + val);
+      el("text", { x: x + bw / 2, y: B + 18, "font-size": 11.5, fill: "#4b5563", "text-anchor": "middle" }, g, b[0]);
+      if (i < 4) {
+        const lvl = i === 0 ? 100 : i === 1 ? 100 - d : i === 2 ? 100 - d + p : end;
+        el("line", { x1: x + bw, x2: x + bw + gap, y1: Y(lvl), y2: Y(lvl), stroke: "#9ca3af", "stroke-dasharray": "3 3" }, g);
+      }
+    });
+    el("line", { x1: L, x2: R, y1: Y(100), y2: Y(100), stroke: "#1e3a8a", "stroke-width": 1, "stroke-dasharray": "6 4", "stroke-opacity": .5 }, g);
+    const v = document.getElementById("taskVerdict");
+    const net = end - 100;
+    v.className = "verdict " + (net >= 0 ? "good" : "bad");
+    v.innerHTML = `雇用は導入前の100から <b class="${net >= 0 ? "good" : "bad"}">${end}（${net >= 0 ? "+" : ""}${net}）</b> になる。` +
+      (net >= 0 ? "生産性効果と復元効果が置換効果を上回り、全体の雇用は減らない。" : "置換効果が大きく、全体の雇用が減る（技術的失業）。") +
+      ` ただし、置き換えられた <span class="readout">${d}</span> 人分の仕事をしていた人が、<strong>新しいタスク（${r}人分）に移れるかどうか</strong>は別の問題である。`;
+  }
+  btns.forEach(b => b.addEventListener("click", () => {
+    btns.forEach(x => x.classList.toggle("on", x === b));
+    const v = PRESET[b.dataset.k];
+    sD.value = v[0]; sP.value = v[1]; sR.value = v[2];
+    draw();
+  }));
+  [sD, sP, sR].forEach(s => s.addEventListener("input", () => { btns.forEach(x => x.classList.remove("on")); draw(); }));
+  draw();
+})();
+
+/* =========================================
+   雇用形態を転換した理由（図表6-4、全体）
+   ========================================= */
+(function () {
+  const g = document.getElementById("convBars");
+  const D = [
+    ["雇用を安定させたかった", 79.5], ["より高い収入を得たかった", 75.6], ["「正社員」という位置づけを得たかった", 41.5],
+    ["親・家族を安心させたかった", 33.7], ["定年後の継続雇用のため", 28.6], ["キャリアアップをしたかった", 27.6],
+    ["家事、育児、介護等と両立させたかった", 24.0], ["老後の備えをしたかった", 21.9], ["長期的な人生設計が出来るようになりたかった", 17.4],
+    ["思う存分に仕事に打ち込みたかった", 17.1], ["管理職などになりたかった", 5.8], ["病気、障害等と両立させたかった", 5.2], ["その他", 25.9]
+  ];
+  const L = 290, R = 620, T = 10, rowH = 30;
+  D.forEach((d, i) => {
+    const y = T + i * rowH;
+    const w = d[1] / 100 * (R - L);
+    el("text", { x: L - 10, y: y + 17, "font-size": 12, fill: "#4b5563", "text-anchor": "end" }, g, d[0]);
+    el("rect", { x: L, y: y + 5, width: R - L, height: 18, rx: 4, fill: "#f1f1ec" }, g);
+    el("rect", { x: L, y: y + 5, width: w, height: 18, rx: 4, fill: i < 2 ? "#0e7490" : "#94a3b8" }, g);
+    el("text", { x: L + w + 6, y: y + 18, "font-size": 11.5, fill: "#1f2937", "font-family": MONO }, g, d[1].toFixed(1));
+  });
+})();
+
+/* =========================================
+   雇用転換を希望していない理由（従業員図表6-11）
+   ========================================= */
+(function () {
+  const g = document.getElementById("noConvBars");
+  const btns = document.querySelectorAll("#noConvSeg button");
+  const REASONS = ["自分の都合のよい時間で働けなくなるから", "家事・育児・介護等と両立できなくなるから", "現在の雇用形態に満足しているから"];
+  // [グループ, n, 理由1, 理由2, 理由15]
+  const D = [
+    ["全体", 8303, 6.6, 8.2, 40.4],
+    ["正規・フルタイム・無期", 3533, 1.5, 2.8, 58.0],
+    ["非正規・フルタイム・無期", 273, 12.1, 12.5, 20.9],
+    ["非正規・パート・無期", 826, 17.8, 20.7, 17.3],
+    ["非正規・パート・有期", 822, 14.6, 20.0, 18.0]
+  ];
+  const COLS = ["#b45309", "#b45309", "#0e7490"];
+  const L = 220, R = 600, T = 14, rowH = 44;
+  function draw(k) {
+    while (g.firstChild) g.removeChild(g.firstChild);
+    const max = k === 2 ? 70 : 25;
+    el("text", { x: L, y: T, "font-size": 12, "font-weight": 700, fill: COLS[k] }, g, REASONS[k]);
+    D.forEach((d, i) => {
+      const y = T + 12 + i * rowH;
+      const v = d[2 + k];
+      const w = v / max * (R - L);
+      el("text", { x: L - 10, y: y + 18, "font-size": 12.5, fill: "#1f2937", "text-anchor": "end", "font-weight": i === 0 ? 700 : 400 }, g, d[0]);
+      el("text", { x: L - 10, y: y + 32, "font-size": 10.5, fill: "#6b7280", "text-anchor": "end", "font-family": MONO }, g, "n=" + fmt(d[1]));
+      el("rect", { x: L, y: y + 6, width: R - L, height: 22, rx: 4, fill: "#f1f1ec" }, g);
+      el("rect", { x: L, y: y + 6, width: w, height: 22, rx: 4, fill: COLS[k], "fill-opacity": i === 0 ? .55 : .9 }, g);
+      el("text", { x: L + w + 6, y: y + 22, "font-size": 12, "font-weight": 700, fill: "#1f2937", "font-family": MONO }, g, v.toFixed(1) + "%");
+    });
+  }
+  btns.forEach(b => b.addEventListener("click", () => {
+    btns.forEach(x => x.classList.toggle("on", x === b));
+    draw(+b.dataset.k);
+  }));
+  draw(0);
+})();
+
+/* =========================================
+   暗黙の契約：期待効用と確実性等価（Canvas）
+   ========================================= */
+(function () {
+  const c = document.getElementById("icCanvas");
+  const sH = document.getElementById("icH"), sL = document.getElementById("icL");
+  const sP = document.getElementById("icP"), sR = document.getElementById("icR");
+  const u = (w, rho) => Math.abs(rho - 1) < 1e-6 ? Math.log(w) : (Math.pow(w, 1 - rho) - 1) / (1 - rho);
+  const uinv = (v, rho) => Math.abs(rho - 1) < 1e-6 ? Math.exp(v) : Math.pow(v * (1 - rho) + 1, 1 / (1 - rho));
+  function draw() {
+    let wH = +sH.value, wL = +sL.value;
+    if (wL > wH) { wL = wH; sL.value = wL; }
+    const p = +sP.value, rho = +sR.value;
+    document.getElementById("icHOut").textContent = wH;
+    document.getElementById("icLOut").textContent = wL;
+    document.getElementById("icPOut").textContent = p.toFixed(2);
+    document.getElementById("icROut").textContent = rho.toFixed(1);
+
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = c.clientWidth, cssH = c.clientHeight;
+    c.width = cssW * dpr; c.height = cssH * dpr;
+    const ctx = c.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, cssW, cssH);
+    const pad = { l: 52, r: 18, t: 18, b: 40 };
+    const xMin = 2, xMax = 62;
+    const yMin = u(xMin, rho), yMax = u(xMax, rho);
+    const xToPx = x => pad.l + (x - xMin) / (xMax - xMin) * (cssW - pad.l - pad.r);
+    const yToPx = y => cssH - pad.b - (y - yMin) / (yMax - yMin) * (cssH - pad.t - pad.b);
+
+    // グリッドと軸
+    ctx.strokeStyle = "#eceae3"; ctx.lineWidth = 1;
+    ctx.font = "11px JetBrains Mono, monospace"; ctx.fillStyle = "#6b7280"; ctx.textAlign = "center";
+    for (let x = 10; x <= 60; x += 10) {
+      ctx.beginPath(); ctx.moveTo(xToPx(x), pad.t); ctx.lineTo(xToPx(x), cssH - pad.b); ctx.stroke();
+      ctx.fillText(x, xToPx(x), cssH - pad.b + 16);
+    }
+    ctx.strokeStyle = "#6b7280"; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, cssH - pad.b); ctx.lineTo(cssW - pad.r, cssH - pad.b); ctx.stroke();
+    ctx.fillStyle = "#4b5563"; ctx.font = "12px Noto Sans JP, sans-serif";
+    ctx.textAlign = "right"; ctx.fillText("賃金 w（万円／月）", cssW - pad.r, cssH - 6);
+    ctx.save(); ctx.translate(16, pad.t + 40); ctx.rotate(-Math.PI / 2); ctx.textAlign = "right"; ctx.fillText("効用 u(w)", 0, 0); ctx.restore();
+
+    // 効用関数
+    ctx.strokeStyle = "#0e7490"; ctx.lineWidth = 2.6; ctx.beginPath();
+    for (let i = 0; i <= 200; i++) {
+      const w = xMin + (xMax - xMin) * i / 200;
+      const px = xToPx(w), py = yToPx(u(w, rho));
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    }
+    ctx.stroke();
+
+    const uH = u(wH, rho), uL = u(wL, rho);
+    const Ew = (1 - p) * wH + p * wL;
+    const EU = (1 - p) * uH + p * uL;
+    const CE = uinv(EU, rho);
+    const RP = Ew - CE;
+
+    // 弦
+    ctx.strokeStyle = "#9ca3af"; ctx.lineWidth = 1.6; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(xToPx(wL), yToPx(uL)); ctx.lineTo(xToPx(wH), yToPx(uH)); ctx.stroke();
+    // 補助線
+    ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+    ctx.strokeStyle = "#b45309";
+    ctx.beginPath(); ctx.moveTo(xToPx(Ew), yToPx(EU)); ctx.lineTo(xToPx(Ew), cssH - pad.b); ctx.stroke();
+    ctx.strokeStyle = "#047857";
+    ctx.beginPath(); ctx.moveTo(xToPx(CE), yToPx(EU)); ctx.lineTo(xToPx(CE), cssH - pad.b); ctx.stroke();
+    ctx.strokeStyle = "#6b7280";
+    ctx.beginPath(); ctx.moveTo(pad.l, yToPx(EU)); ctx.lineTo(xToPx(Math.max(Ew, CE)), yToPx(EU)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // リスク・プレミアムの区間
+    if (RP > 0.05) {
+      const yb = cssH - pad.b - 8;
+      ctx.fillStyle = "rgba(254, 243, 199, .9)";
+      ctx.fillRect(xToPx(CE), yb - 10, xToPx(Ew) - xToPx(CE), 10);
+      ctx.fillStyle = "#92400e"; ctx.font = "11px Noto Sans JP, sans-serif"; ctx.textAlign = "center";
+      ctx.fillText("リスク・プレミアム", (xToPx(CE) + xToPx(Ew)) / 2, yb - 14);
+    }
+
+    const dot = (x, y, col, r) => {
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = "#fff"; ctx.stroke();
+    };
+    dot(xToPx(wL), yToPx(uL), "#64748b", 5);
+    dot(xToPx(wH), yToPx(uH), "#64748b", 5);
+    dot(xToPx(Ew), yToPx(EU), "#b45309", 6);
+    dot(xToPx(CE), yToPx(EU), "#047857", 6);
+    ctx.font = "12px Noto Sans JP, sans-serif"; ctx.fillStyle = "#4b5563"; ctx.textAlign = "left";
+    ctx.fillText("不況時の賃金", xToPx(wL) + 8, yToPx(uL) + 14);
+    ctx.textAlign = "right";
+    ctx.fillText("好況時の賃金", xToPx(wH) - 8, yToPx(uH) - 8);
+
+    const v = document.getElementById("icVerdict");
+    if (RP < 0.05) {
+      v.className = "verdict";
+      v.innerHTML = `期待賃金 <span class="readout">${Ew.toFixed(1)}</span>、確実性等価 <span class="readout">${CE.toFixed(1)}</span>。リスク・プレミアムがほぼ <b>0</b> なので、賃金を安定させても労働者の満足はほとんど増えない（リスク中立、または賃金の変動がない）。保険を結ぶ理由がない。`;
+    } else {
+      v.className = "verdict good";
+      v.innerHTML = `期待賃金 <span class="readout">E[w] = ${Ew.toFixed(1)}</span>、確実性等価 <span class="readout">CE = ${CE.toFixed(1)}</span>、リスク・プレミアム <span class="readout">${RP.toFixed(1)}</span> 万円。` +
+        `企業が <b class="good">${CE.toFixed(1)} 〜 ${Ew.toFixed(1)}</b> 万円の<strong>固定賃金</strong>を約束すれば、労働者は変動する賃金より満足し、リスク中立的な企業は平均して人件費を節約できる。<strong>双方が得をする保険</strong>が成り立つ。`;
+    }
+  }
+  [sH, sL, sP, sR].forEach(s => s.addEventListener("input", draw));
+  window.addEventListener("resize", draw);
+  draw();
+})();
+
+/* =========================================
+   得意分野の組み合わせと希少性
+   ========================================= */
+(function () {
+  const g = document.getElementById("rareChart");
+  const sP = document.getElementById("rp"), sK = document.getElementById("rk");
+  const LABELS = ["分野A", "分野B", "分野C", "分野D"];
+  function draw() {
+    const p = +sP.value / 100, k = +sK.value;
+    document.getElementById("rpOut").textContent = sP.value + "%";
+    document.getElementById("rkOut").textContent = k;
+    while (g.firstChild) g.removeChild(g.firstChild);
+    const w = 110, h = 110, by = 140, gap = 40;
+    const totalW = k * w + (k - 1) * gap;
+    const x0 = (680 - totalW) / 2;
+    for (let i = 0; i < k; i++) {
+      const x = x0 + i * (w + gap);
+      const apexX = x + w / 2, apexY = by - h;
+      // 上位 p の面積となる高さ：相似比 √p
+      const s = Math.sqrt(p);
+      const th = h * s, tw = w * s;
+      el("path", { d: `M${x},${by} L${apexX},${apexY} L${x + w},${by} Z`, fill: "#fff", stroke: "#1f2937", "stroke-width": 2, "stroke-linejoin": "round" }, g);
+      el("path", { d: `M${apexX - tw / 2},${apexY + th} L${apexX},${apexY} L${apexX + tw / 2},${apexY + th} Z`, fill: "#0e7490", "fill-opacity": .75 }, g);
+      el("text", { x: apexX, y: by + 18, "font-size": 12, fill: "#4b5563", "text-anchor": "middle" }, g, LABELS[i] + "：上位" + sP.value + "%");
+    }
+    const rare = Math.pow(p, k);
+    const one = 1 / rare;
+    const v = document.getElementById("rareVerdict");
+    v.className = "verdict " + (rare <= 0.01 ? "good" : "");
+    v.innerHTML = `分野が独立なら、すべてで上位に入る人の割合は <span class="readout">${(p * 100).toFixed(0)}%^${k} = ${(rare * 100).toPrecision(3)}%</span>、つまり <b class="${rare <= 0.01 ? "good" : ""}">約 ${fmt(Math.round(one))} 人に1人</b>。` +
+      (rare <= 0.01 ? "一つの分野で上位1％に入るのと同じくらい希少になる。" : "まだ上位1％ほどの希少性はない。分野を増やすか、それぞれの分野で順位を上げてみよう。");
+  }
+  [sP, sK].forEach(s => s.addEventListener("input", draw));
+  draw();
+})();
+
+/* =========================================
+   一人を雇う総費用
+   ========================================= */
+(function () {
+  const sW = document.getElementById("hcW"), sM = document.getElementById("hcM");
+  function draw() {
+    const w = +sW.value, m = +sM.value;
+    document.getElementById("hcWOut").textContent = w.toFixed(1);
+    document.getElementById("hcMOut").textContent = m.toFixed(2) + " 倍";
+    const total = w * m;
+    const oku = Math.floor(total), man = Math.round((total - oku) * 10000);
+    document.getElementById("hcVerdict").innerHTML =
+      `一人を定年まで雇う総費用は約 <b>${oku}億${man ? fmt(man) + "万" : ""}円</b>。数千万円のマンション（仮に5,000万円）の <span class="readout">約 ${(total / 0.5).toFixed(1)} 倍</span> の買い物である。`;
+  }
+  [sW, sM].forEach(s => s.addEventListener("input", draw));
+  draw();
+})();
+
+/* =========================================
+   localStorage への保存 / 読み込み
+   ========================================= */
+const STORAGE_KEY = "labor-lecture-f05-answers";
+function loadAnswers() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; }
+}
+function saveAnswers(obj) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(obj)); } catch { /* 保存できない環境では無視 */ }
+}
+function saveKey(key, value) {
+  const a = loadAnswers();
+  a[key] = value;
+  saveAnswers(a);
+}
+const answers = loadAnswers();
+document.querySelectorAll("textarea.answer-input").forEach(t => {
+  const qid = t.dataset.qid;
+  if (answers[qid]) t.value = answers[qid];
+  const indicator = document.querySelector(`.answer-save[data-for="${qid}"]`);
+  let saveTimer;
+  const setIndicator = (state) => {
+    if (!indicator) return;
+    if (state === "saved") { indicator.textContent = "保存済み"; indicator.classList.add("saved"); }
+    else if (state === "saving") { indicator.textContent = "保存中…"; indicator.classList.remove("saved"); }
+    else { indicator.textContent = "未保存"; indicator.classList.remove("saved"); }
+  };
+  if (t.value) setIndicator("saved");
+  t.addEventListener("input", () => {
+    setIndicator("saving");
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      saveKey(qid, t.value);
+      setIndicator("saved");
+    }, 350);
+  });
+});
+
+/* =========================================
+   面接の評価シート（自己評価）
+   ========================================= */
+(function () {
+  const SHEET = [
+    ["第一印象", [["清潔感", "服装、髪の乱れ・初対面での適度な清潔感"], ["視線・表情", "相手の目を見る・感情に合わせた表情・明るさ"], ["声の大きさ・言葉遣い等", "適度な声の大きさ・その場に合わせた言葉遣い"]]],
+    ["関係構築力", [["論理性", "話に説得力があるか・論理的か"], ["傾聴", "相手の話を聞いている態度・表情・頷き"], ["理解力", "質問の意図を理解している・回答の説得力"], ["要約力", "自己PR等のまとめ方・端的にまとめる力"], ["多様性への理解", "様々な人々とコミュニケーションできる力"]]],
+    ["スキル・経験", [["自己PR", "強みの内容・裏付け・説得力"], ["志望動機", "明確な志望理由か・思い"], ["職務スキル", "パソコン等の基本的な職務スキル・特殊スキル"], ["経験力（成功・失敗）", "失敗と成功の要因分析・経験を職務に活かせる"]]],
+    ["社会人能力（自走性）", [["主体性", "依存せずに物事を進められる・自ら自走できる"], ["課題発見力・解決力", "現状の分析・課題の発見・課題を解決できる"], ["行動力", "職務遂行に伴い責任感をもって行動できる"], ["精神力（ストレス耐性）", "人間関係、職務に対するストレス耐性"], ["好奇心・向上心", "好奇心と向上心があるか・チャレンジ精神"], ["交渉力", "社内外への交渉に伴う論理性や行動力"]]],
+    ["その他", [["事業理解", "当社の事業への理解・知識の有無"], ["企画力", "新しい発想力・改善力"]]]
+  ];
+  const body = document.getElementById("sheetBody");
+  const saved = loadAnswers().sheet || {};
+  SHEET.forEach((cat, ci) => {
+    cat[1].forEach((item, ii) => {
+      const tr = document.createElement("tr");
+      if (ii === 0) {
+        const td = document.createElement("td");
+        td.className = "cat"; td.rowSpan = cat[1].length; td.textContent = cat[0];
+        tr.appendChild(td);
+      }
+      const key = ci + "-" + ii;
+      const opts = ['<option value="">−</option>'].concat([5, 4, 3, 2, 1].map(n => `<option value="${n}"${saved[key] == n ? " selected" : ""}>${n}</option>`)).join("");
+      tr.innerHTML += `<td class="lead">${item[0]}</td><td class="left" style="font-size:12.5px;color:var(--muted);">${item[1]}</td><td><select data-key="${key}" aria-label="${item[0]}の自己評価">${opts}</select></td>`;
+      body.appendChild(tr);
+    });
+  });
+  const barsBox = document.getElementById("catBars");
+  function update() {
+    const vals = {};
+    body.querySelectorAll("select").forEach(s => { if (s.value) vals[s.dataset.key] = +s.value; });
+    saveKey("sheet", vals);
+    let html = '<div class="graph-title" style="margin-bottom:4px;">項目別の平均（5点満点）</div>';
+    SHEET.forEach((cat, ci) => {
+      const xs = cat[1].map((_, ii) => vals[ci + "-" + ii]).filter(v => v);
+      const avg = xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0;
+      html += `<div class="cat-bar"><span>${cat[0]}</span><div class="track"><div class="bar" style="width:${avg / 5 * 100}%"></div></div><span class="val">${xs.length ? avg.toFixed(1) : "−"}</span></div>`;
+    });
+    barsBox.innerHTML = html + '<p style="font-size:12.5px;color:var(--muted);margin:8px 0 0;">点数の低い項目は、面接で企業側の不安を残しやすいところ。どんな経験やエビデンスで補えるかを考えてみよう。</p>';
+  }
+  body.addEventListener("change", update);
+  update();
+})();
+
+/* =========================================
+   タスク分類ツール
+   ========================================= */
+(function () {
+  const AI = ["", "AIに代替されやすい", "AIに補完される", "人にしかできない"];
+  const KN = ["", "形式知", "暗黙知"];
+  const rowsBox = document.getElementById("taskRows");
+  const ind = document.getElementById("taskSave");
+  const jobInput = document.getElementById("jobName");
+  const saved = loadAnswers().tasks || { job: "", rows: [] };
+  let rows = saved.rows && saved.rows.length ? saved.rows : Array.from({ length: 5 }, () => ({ t: "", a: "", k: "" }));
+  jobInput.value = saved.job || "";
+  let timer;
+  function persist() {
+    ind.textContent = "保存中…"; ind.classList.remove("saved");
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      saveKey("tasks", { job: jobInput.value, rows });
+      ind.textContent = "保存済み"; ind.classList.add("saved");
+    }, 350);
+  }
+  function opt(list, v) { return list.map(o => `<option value="${o}"${o === v ? " selected" : ""}>${o || "選択"}</option>`).join(""); }
+  function render() {
+    rowsBox.innerHTML = rows.map((r, i) =>
+      `<tr><td class="num-cell">${i + 1}</td>` +
+      `<td><input type="text" data-i="${i}" data-f="t" value="${r.t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")}" placeholder="例：顧客の要望を聞き取る"></td>` +
+      `<td><select data-i="${i}" data-f="a">${opt(AI, r.a)}</select></td>` +
+      `<td><select data-i="${i}" data-f="k">${opt(KN, r.k)}</select></td></tr>`).join("");
+    document.getElementById("addTask").disabled = rows.length >= 8;
+    tally();
+  }
+  function tally() {
+    const tb = document.getElementById("tallyBody");
+    let html = "";
+    let cell = {}, total = 0;
+    AI.slice(1).forEach(a => {
+      const f = rows.filter(r => r.a === a && r.k === "形式知").length;
+      const m = rows.filter(r => r.a === a && r.k === "暗黙知").length;
+      cell[a] = [f, m]; total += f + m;
+      html += `<tr><td class="lead">${a}</td><td${a === AI[1] && f ? ' class="highlight"' : ""}>${f}</td><td>${m}</td><td>${f + m}</td></tr>`;
+    });
+    tb.innerHTML = html;
+    const v = document.getElementById("tallyVerdict");
+    if (!total) { v.textContent = "タスクを書き、2つの分類を選ぶと、ここに集計が表示される。"; return; }
+    const sub = cell[AI[1]][0] + cell[AI[1]][1];
+    const tacit = rows.filter(r => r.k === "暗黙知" && r.a).length;
+    v.innerHTML = `分類したタスク <span class="readout">${total}</span> 個のうち、AIに代替されやすいものは <span class="readout">${sub}</span> 個、暗黙知に支えられたものは <span class="readout">${tacit}</span> 個。` +
+      (cell[AI[1]][0] >= Math.ceil(total / 2) ? "<strong>形式知で代替されやすいタスク</strong>が多い職種は、入口業務が減るかもしれない。暗黙知をどこで身につけるかを考えよう。" : "代替されやすいタスクは一部にとどまる。仕事の中身がどう入れ替わるかを考えてみよう。");
+  }
+  rowsBox.addEventListener("input", e => {
+    const t = e.target; const i = +t.dataset.i;
+    if (!t.dataset.f) return;
+    rows[i][t.dataset.f] = t.value;
+    if (t.tagName === "SELECT") tally();
+    persist();
+  });
+  rowsBox.addEventListener("change", e => { if (e.target.tagName === "SELECT") tally(); });
+  jobInput.addEventListener("input", persist);
+  document.getElementById("addTask").addEventListener("click", () => {
+    if (rows.length < 8) { rows.push({ t: "", a: "", k: "" }); render(); persist(); }
+  });
+  render();
+  if (saved.rows && saved.rows.length) { ind.textContent = "保存済み"; ind.classList.add("saved"); }
+})();
+</script>
+</body>
+</html>
